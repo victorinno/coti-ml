@@ -367,7 +367,7 @@ repetidos</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>função utilizda para criar vetores de caractes: paste()</p>
+<p>função utilizada para criar vetores de caractes: paste()</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubiA8LWMoXCJsdWNhc1wiLCBcImJpYVwiLCBcInJ1aVwiKVxublxuYGBgIn0= -->
@@ -403,10 +403,115 @@ n</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="fatores" class="section level2">
+<h2>Fatores</h2>
+<p>Fatores são estruturas de dados do R que possuem levels e são objetos de classes diferentes do vetor</p>
+<div id="criando-fatores" class="section level3">
+<h3>Criando fatores</h3>
+<p>Vetores não são objetos R, por isso apesar de ter classe não tem atributos</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXN0YWRvcyA8LSBjKFwiUkpcIixcIlNQXCIsIFwiTUdcIilcbmVzdGFkb3NcbmBgYCJ9 -->
+<pre class="r"><code>estados &lt;- c(&quot;RJ&quot;,&quot;SP&quot;, &quot;MG&quot;)
+estados</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUkpcIiBcIlNQXCIgXCJNR1wiXG4ifQ== -->
+<pre><code>[1] &quot;RJ&quot; &quot;SP&quot; &quot;MG&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoZXN0YWRvcylcbmBgYCJ9 -->
+<pre class="r"><code>class(estados)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0cmlidXRlcyhlc3RhZG9zKVxuYGBgIn0= -->
+<pre class="r"><code>attributes(estados)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTlVMTFxuIn0= -->
+<pre><code>NULL</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Para criar um fato use a função factor</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXN0YWRvc0YgPC0gZmFjdG9yKGVzdGFkb3MpXG5lc3RhZG9zRlxuYGBgIn0= -->
+<pre class="r"><code>estadosF &lt;- factor(estados)
+estadosF</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFJKIFNQIE1HXG5MZXZlbHM6IE1HIFJKIFNQXG4ifQ== -->
+<pre><code>[1] RJ SP MG
+Levels: MG RJ SP</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Agora ele tem atributos</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoZXN0YWRvc0YpXG5gYGAifQ== -->
+<pre class="r"><code>class(estadosF)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiZmFjdG9yXCJcbiJ9 -->
+<pre><code>[1] &quot;factor&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0cmlidXRlcyhlc3RhZG9zRilcbmBgYCJ9 -->
+<pre class="r"><code>attributes(estadosF)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJGxldmVsc1xuWzFdIFwiTUdcIiBcIlJKXCIgXCJTUFwiXG5cbiRjbGFzc1xuWzFdIFwiZmFjdG9yXCJcbiJ9 -->
+<pre><code>$levels
+[1] &quot;MG&quot; &quot;RJ&quot; &quot;SP&quot;
+
+$class
+[1] &quot;factor&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>A função table() serve para contar os valores</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVzc29hcyA8LSBjKFwiUnVpXCIsIFwiQmlhXCIsIFwiQW5hXCIsIFwiTGVvXCIsIFwiTmF0XCIsIFwiUnVpXCIsIFwiTGVvXCIsIFwiQmlhXCIsIFwiTGVvXCIpXG5wZXNzb2FzXG5gYGAifQ== -->
+<pre class="r"><code>pessoas &lt;- c(&quot;Rui&quot;, &quot;Bia&quot;, &quot;Ana&quot;, &quot;Leo&quot;, &quot;Nat&quot;, &quot;Rui&quot;, &quot;Leo&quot;, &quot;Bia&quot;, &quot;Leo&quot;)
+pessoas</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUnVpXCIgXCJCaWFcIiBcIkFuYVwiIFwiTGVvXCIgXCJOYXRcIiBcIlJ1aVwiIFwiTGVvXCIgXCJCaWFcIiBcIkxlb1wiXG4ifQ== -->
+<pre><code>[1] &quot;Rui&quot; &quot;Bia&quot; &quot;Ana&quot; &quot;Leo&quot; &quot;Nat&quot; &quot;Rui&quot; &quot;Leo&quot; &quot;Bia&quot; &quot;Leo&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUocGVzc29hcylcbmBgYCJ9 -->
+<pre class="r"><code>table(pessoas)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicGVzc29hc1xuQW5hIEJpYSBMZW8gTmF0IFJ1aSBcbiAgMSAgIDIgICAzICAgMSAgIDIgXG4ifQ== -->
+<pre><code>pessoas
+Ana Bia Leo Nat Rui 
+  1   2   3   1   2 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGVzc29hc24gPC0gZmFjdG9yKHBlc3NvYXMsIGxldmVscyA9IGMoXCJBbmFcIiwgXCJSdWlcIiwgXCJOYXRcIiwgXCJCaWFcIiwgXCJMZW9cIiwgXCJCb2JcIikpXG5wZXNzb2FzblxuYGBgIn0= -->
+<pre class="r"><code>pessoasn &lt;- factor(pessoas, levels = c(&quot;Ana&quot;, &quot;Rui&quot;, &quot;Nat&quot;, &quot;Bia&quot;, &quot;Leo&quot;, &quot;Bob&quot;))
+pessoasn</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFJ1aSBCaWEgQW5hIExlbyBOYXQgUnVpIExlbyBCaWEgTGVvXG5MZXZlbHM6IEFuYSBSdWkgTmF0IEJpYSBMZW8gQm9iXG4ifQ== -->
+<pre><code>[1] Rui Bia Ana Leo Nat Rui Leo Bia Leo
+Levels: Ana Rui Nat Bia Leo Bob</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUocGVzc29hc24pXG5gYGAifQ== -->
+<pre class="r"><code>table(pessoasn)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicGVzc29hc25cbkFuYSBSdWkgTmF0IEJpYSBMZW8gQm9iIFxuICAxICAgMiAgIDEgICAyICAgMyAgIDAgXG4ifQ== -->
+<pre><code>pessoasn
+Ana Rui Nat Bia Leo Bob 
+  1   2   1   2   3   0 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgQXVsYSAwMSINCm91dHB1dDoNCiAgaHRtbF9kb2N1bWVudDoNCiAgICBkZl9wcmludDogcGFnZWQNCi0tLQ0KDQpQcmltZWlyYSBhdWxhIGRlIFINCg0KNiBhdWxhcyBkZSBSIC0+IFJTdHVkaW8NCjcgQXVsYXMgZGUgUHl0aG9uIC0+IEFuYWNvbmRhDQoNClI6DQoNCiogTGluZ3VhZ2VtIFINCiogRXN0YXTDrXN0aWNhIGUgcHJvYmFiaWxpZGFkZQ0KKiB0cmVpbmFtZW50bw0KKiBhcHJlbmRpemFnZW0gZGUgbcOhcXVpbmENCg0KIyMgRGVjbGFyYcOnw6NvIGRlIHZhcmnDoXZlbA0KDQpgYGB7cn0NCmMgPC0gMTANCmMNCg0KDQpgYGANCg0KIyMgQ3JpYcOnw6NvIGRlIHZldG9yZXMNCg0KdmV0b3JlcyBudW3DqXJpY29zDQoNCmBgYHtyfQ0KdmV0b3IgPC0gYygxLDIsMyw0LDUsNiw3KQ0KdmV0b3INCmBgYA0KDQpWZXRvcmVzIGRlIGNhcmFjdGVyZXMNCg0KYGBge3J9DQpub21lcyA8LSBjKCJtYXJpYSIsICJqb3NlIiwgImpvYW8iKQ0Kbm9tZXMNCmBgYA0KDQphY2Vzc28gcG9yIHBvc2nDp8Ojbw0KDQpBIHBvc2nDp8OjbyBkbyBSIGluaWNpYWwgw6kgMQ0KDQpgYGB7cn0NCm5vbWVzWzFdDQpgYGANCg0KUGFyYSBwZWdhciBvIHRhbWFuaG8gZG8gdmV0b3Igw6kgY29tIGEgZnVuw6fDo28gUg0KDQpgYGB7cn0NCmxlbmd0aChub21lcykNCmxlbmd0aCh2ZXRvcikNCmBgYA0KDQpwYXJhIHZhbGlkYXIgc2Ugw6kgdmV0b3IgdXNhciBhIGZ1bsOnw6NvIGlzLnZlY3Rvcg0KDQpgYGB7cn0NCmlzLnZlY3Rvcihub21lcykNCmBgYA0KDQpwb2RlLXNlIGNyaWFyIHVtIHZldG9yIG51bcOpcmljbyBhIHBhcnRpciBkZSB1bSBpbnRlcnZhbG8NCg0KYGBge3J9DQpudW1lcm9zIDwtIDE6MTANCm51bWVyb3MNCmBgYA0KDQphIGZ1bsOnw6NvIHNlcSB0YW1iw6ltIGNyaWEgc2VxdcOqbmNpYSBudW3DqXJpY2ENCg0KYGBge3J9DQpudW1lcm9zMiA8LSBzZXEoMCwxLGJ5PTAuMSkNCm51bWVyb3MyDQpgYGANCg0KYGBge3J9DQpjKCJhIiwgbnVtZXJvcykNCmBgYA0KDQpPcGVyYcOnw7VlcyBtYXRlbcOhdGljYXMgc8OjbyBhcGxpY2FkYXMgc29icmUgdG9kbyBvIGFycmF5DQoNCmBgYHtyfQ0Kb3BlcmFjYW8gPC0gYygxMCwyMCwzMCw0MCw1MCkNCm9wZXJhY2FvICogMw0Kb3BlcmFjYW8gLSAzDQpvcGVyYWNhbyArIDMNCm9wZXJhY2FvIC8gMw0KYGBgDQoNCkFycmVkb25kYW1lbnRvcyBzw6NvIGFwbGljYWRvcyBzb2JyZSB0b2RvIG8gYXJyYXkNCg0KYGBge3J9DQpyb3VuZChvcGVyYWNhbyAvIDMpDQpgYGANCg0KUGFyYSBjcmlhciB2ZXRvcmVzIGRlIG51bWVyb3MgcmVwZXRpZG9zDQoNCmBgYHtyfQ0KcmVwZXRpZG9zIDwtIHJlcCgxLDUpDQpyZXBldGlkb3MNCg0KcmVwZXRpZG9zIDwtIHJlcChjKDEsMiksIGMoMyw0KSkNCnJlcGV0aWRvcw0KYGBgDQoNCmZ1bsOnw6NvIHV0aWxpemRhIHBhcmEgY3JpYXIgdmV0b3JlcyBkZSBjYXJhY3RlczogcGFzdGUoKQ0KDQpgYGB7cn0NCm4gPC1jKCJsdWNhcyIsICJiaWEiLCAicnVpIikNCm4NCg0KcGFzdGUobiwgMTozKQ0KcGFzdGUoIm1hcmlhIiwgMikNCg0KcGFzdGUoIlQiLCAxOjMsIHNlcCA9ICIiKQ0KcmVwKHBhc3RlKCJUIiwgMTozLCBzZXAgPSAiIiksIGMoNCw0LDMpKQ0KYGBgDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgQXVsYSAwMSINCm91dHB1dDoNCiAgaHRtbF9kb2N1bWVudDoNCiAgICBkZl9wcmludDogcGFnZWQNCi0tLQ0KDQpQcmltZWlyYSBhdWxhIGRlIFINCg0KNiBhdWxhcyBkZSBSIC0+IFJTdHVkaW8NCjcgQXVsYXMgZGUgUHl0aG9uIC0+IEFuYWNvbmRhDQoNClI6DQoNCiogTGluZ3VhZ2VtIFINCiogRXN0YXTDrXN0aWNhIGUgcHJvYmFiaWxpZGFkZQ0KKiB0cmVpbmFtZW50bw0KKiBhcHJlbmRpemFnZW0gZGUgbcOhcXVpbmENCg0KIyMgRGVjbGFyYcOnw6NvIGRlIHZhcmnDoXZlbA0KDQpgYGB7cn0NCmMgPC0gMTANCmMNCg0KDQpgYGANCg0KIyMgQ3JpYcOnw6NvIGRlIHZldG9yZXMNCg0KdmV0b3JlcyBudW3DqXJpY29zDQoNCmBgYHtyfQ0KdmV0b3IgPC0gYygxLDIsMyw0LDUsNiw3KQ0KdmV0b3INCmBgYA0KDQpWZXRvcmVzIGRlIGNhcmFjdGVyZXMNCg0KYGBge3J9DQpub21lcyA8LSBjKCJtYXJpYSIsICJqb3NlIiwgImpvYW8iKQ0Kbm9tZXMNCmBgYA0KDQphY2Vzc28gcG9yIHBvc2nDp8Ojbw0KDQpBIHBvc2nDp8OjbyBkbyBSIGluaWNpYWwgw6kgMQ0KDQpgYGB7cn0NCm5vbWVzWzFdDQpgYGANCg0KUGFyYSBwZWdhciBvIHRhbWFuaG8gZG8gdmV0b3Igw6kgY29tIGEgZnVuw6fDo28gUg0KDQpgYGB7cn0NCmxlbmd0aChub21lcykNCmxlbmd0aCh2ZXRvcikNCmBgYA0KDQpwYXJhIHZhbGlkYXIgc2Ugw6kgdmV0b3IgdXNhciBhIGZ1bsOnw6NvIGlzLnZlY3Rvcg0KDQpgYGB7cn0NCmlzLnZlY3Rvcihub21lcykNCmBgYA0KDQpwb2RlLXNlIGNyaWFyIHVtIHZldG9yIG51bcOpcmljbyBhIHBhcnRpciBkZSB1bSBpbnRlcnZhbG8NCg0KYGBge3J9DQpudW1lcm9zIDwtIDE6MTANCm51bWVyb3MNCmBgYA0KDQphIGZ1bsOnw6NvIHNlcSB0YW1iw6ltIGNyaWEgc2VxdcOqbmNpYSBudW3DqXJpY2ENCg0KYGBge3J9DQpudW1lcm9zMiA8LSBzZXEoMCwxLGJ5PTAuMSkNCm51bWVyb3MyDQpgYGANCg0KYGBge3J9DQpjKCJhIiwgbnVtZXJvcykNCmBgYA0KDQpPcGVyYcOnw7VlcyBtYXRlbcOhdGljYXMgc8OjbyBhcGxpY2FkYXMgc29icmUgdG9kbyBvIGFycmF5DQoNCmBgYHtyfQ0Kb3BlcmFjYW8gPC0gYygxMCwyMCwzMCw0MCw1MCkNCm9wZXJhY2FvICogMw0Kb3BlcmFjYW8gLSAzDQpvcGVyYWNhbyArIDMNCm9wZXJhY2FvIC8gMw0KYGBgDQoNCkFycmVkb25kYW1lbnRvcyBzw6NvIGFwbGljYWRvcyBzb2JyZSB0b2RvIG8gYXJyYXkNCg0KYGBge3J9DQpyb3VuZChvcGVyYWNhbyAvIDMpDQpgYGANCg0KUGFyYSBjcmlhciB2ZXRvcmVzIGRlIG51bWVyb3MgcmVwZXRpZG9zDQoNCmBgYHtyfQ0KcmVwZXRpZG9zIDwtIHJlcCgxLDUpDQpyZXBldGlkb3MNCg0KcmVwZXRpZG9zIDwtIHJlcChjKDEsMiksIGMoMyw0KSkNCnJlcGV0aWRvcw0KYGBgDQoNCmZ1bsOnw6NvIHV0aWxpemFkYSBwYXJhIGNyaWFyIHZldG9yZXMgZGUgY2FyYWN0ZXM6IHBhc3RlKCkNCg0KYGBge3J9DQpuIDwtYygibHVjYXMiLCAiYmlhIiwgInJ1aSIpDQpuDQoNCnBhc3RlKG4sIDE6MykNCnBhc3RlKCJtYXJpYSIsIDIpDQoNCnBhc3RlKCJUIiwgMTozLCBzZXAgPSAiIikNCnJlcChwYXN0ZSgiVCIsIDE6Mywgc2VwID0gIiIpLCBjKDQsNCwzKSkNCmBgYA0KDQojIyBGYXRvcmVzDQoNCkZhdG9yZXMgc8OjbyBlc3RydXR1cmFzIGRlIGRhZG9zIGRvIFIgcXVlIHBvc3N1ZW0gbGV2ZWxzIGUgc8OjbyBvYmpldG9zIGRlIGNsYXNzZXMgZGlmZXJlbnRlcyBkbyB2ZXRvcg0KDQojIyMgQ3JpYW5kbyBmYXRvcmVzDQoNClZldG9yZXMgbsOjbyBzw6NvIG9iamV0b3MgUiwgcG9yIGlzc28gYXBlc2FyIGRlIHRlciBjbGFzc2UgbsOjbyB0ZW0gYXRyaWJ1dG9zDQoNCmBgYHtyfQ0KZXN0YWRvcyA8LSBjKCJSSiIsIlNQIiwgIk1HIikNCmVzdGFkb3MNCmNsYXNzKGVzdGFkb3MpDQphdHRyaWJ1dGVzKGVzdGFkb3MpDQpgYGANCg0KUGFyYSBjcmlhciB1bSBmYXRvIHVzZSBhIGZ1bsOnw6NvIGZhY3Rvcg0KDQpgYGB7cn0NCmVzdGFkb3NGIDwtIGZhY3Rvcihlc3RhZG9zKQ0KZXN0YWRvc0YNCmBgYA0KDQpBZ29yYSBlbGUgdGVtIGF0cmlidXRvcw0KDQpgYGB7cn0NCmNsYXNzKGVzdGFkb3NGKQ0KYXR0cmlidXRlcyhlc3RhZG9zRikNCg0KYGBgDQoNCkEgZnVuw6fDo28gdGFibGUoKSBzZXJ2ZSBwYXJhIGNvbnRhciBvcyB2YWxvcmVzDQoNCmBgYHtyfQ0KcGVzc29hcyA8LSBjKCJSdWkiLCAiQmlhIiwgIkFuYSIsICJMZW8iLCAiTmF0IiwgIlJ1aSIsICJMZW8iLCAiQmlhIiwgIkxlbyIpDQoNCnBlc3NvYXMNCg0KdGFibGUocGVzc29hcykNCg0KYGBgDQoNCmBgYHtyfQ0KcGVzc29hc24gPC0gZmFjdG9yKHBlc3NvYXMsIGxldmVscyA9IGMoIkFuYSIsICJSdWkiLCAiTmF0IiwgIkJpYSIsICJMZW8iLCAiQm9iIikpDQpwZXNzb2Fzbg0KDQp0YWJsZShwZXNzb2FzbikNCmBgYA0KDQo=</div>
 
 
 

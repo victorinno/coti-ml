@@ -194,7 +194,7 @@ repetidos</code></pre>
 <pre class="r"><code>repetidos &lt;- rep(c(1,2), c(3,4))
 repetidos</code></pre>
 <pre><code>## [1] 1 1 1 2 2 2 2</code></pre>
-<p>função utilizda para criar vetores de caractes: paste()</p>
+<p>função utilizada para criar vetores de caractes: paste()</p>
 <pre class="r"><code>n &lt;-c(&quot;lucas&quot;, &quot;bia&quot;, &quot;rui&quot;)
 n</code></pre>
 <pre><code>## [1] &quot;lucas&quot; &quot;bia&quot;   &quot;rui&quot;</code></pre>
@@ -206,6 +206,52 @@ n</code></pre>
 <pre><code>## [1] &quot;T1&quot; &quot;T2&quot; &quot;T3&quot;</code></pre>
 <pre class="r"><code>rep(paste(&quot;T&quot;, 1:3, sep = &quot;&quot;), c(4,4,3))</code></pre>
 <pre><code>##  [1] &quot;T1&quot; &quot;T1&quot; &quot;T1&quot; &quot;T1&quot; &quot;T2&quot; &quot;T2&quot; &quot;T2&quot; &quot;T2&quot; &quot;T3&quot; &quot;T3&quot; &quot;T3&quot;</code></pre>
+</div>
+<div id="fatores" class="section level2">
+<h2>Fatores</h2>
+<p>Fatores são estruturas de dados do R que possuem levels e são objetos de classes diferentes do vetor</p>
+<div id="criando-fatores" class="section level3">
+<h3>Criando fatores</h3>
+<p>Vetores não são objetos R, por isso apesar de ter classe não tem atributos</p>
+<pre class="r"><code>estados &lt;- c(&quot;RJ&quot;,&quot;SP&quot;, &quot;MG&quot;)
+estados</code></pre>
+<pre><code>## [1] &quot;RJ&quot; &quot;SP&quot; &quot;MG&quot;</code></pre>
+<pre class="r"><code>class(estados)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>attributes(estados)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>Para criar um fato use a função factor</p>
+<pre class="r"><code>estadosF &lt;- factor(estados)
+estadosF</code></pre>
+<pre><code>## [1] RJ SP MG
+## Levels: MG RJ SP</code></pre>
+<p>Agora ele tem atributos</p>
+<pre class="r"><code>class(estadosF)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>attributes(estadosF)</code></pre>
+<pre><code>## $levels
+## [1] &quot;MG&quot; &quot;RJ&quot; &quot;SP&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</code></pre>
+<p>A função table() serve para contar os valores</p>
+<pre class="r"><code>pessoas &lt;- c(&quot;Rui&quot;, &quot;Bia&quot;, &quot;Ana&quot;, &quot;Leo&quot;, &quot;Nat&quot;, &quot;Rui&quot;, &quot;Leo&quot;, &quot;Bia&quot;, &quot;Leo&quot;)
+
+pessoas</code></pre>
+<pre><code>## [1] &quot;Rui&quot; &quot;Bia&quot; &quot;Ana&quot; &quot;Leo&quot; &quot;Nat&quot; &quot;Rui&quot; &quot;Leo&quot; &quot;Bia&quot; &quot;Leo&quot;</code></pre>
+<pre class="r"><code>table(pessoas)</code></pre>
+<pre><code>## pessoas
+## Ana Bia Leo Nat Rui 
+##   1   2   3   1   2</code></pre>
+<pre class="r"><code>pessoasn &lt;- factor(pessoas, levels = c(&quot;Ana&quot;, &quot;Rui&quot;, &quot;Nat&quot;, &quot;Bia&quot;, &quot;Leo&quot;, &quot;Bob&quot;))
+pessoasn</code></pre>
+<pre><code>## [1] Rui Bia Ana Leo Nat Rui Leo Bia Leo
+## Levels: Ana Rui Nat Bia Leo Bob</code></pre>
+<pre class="r"><code>table(pessoasn)</code></pre>
+<pre><code>## pessoasn
+## Ana Rui Nat Bia Leo Bob 
+##   1   2   1   2   3   0</code></pre>
+</div>
 </div>
 
 

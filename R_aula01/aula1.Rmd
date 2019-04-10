@@ -120,5 +120,63 @@ paste("T", 1:3, sep = "")
 rep(paste("T", 1:3, sep = ""), c(4,4,3))
 ```
 
+## Fatores
+
+Fatores são estruturas de dados do R que possuem levels e são objetos de classes diferentes do vetor
+
+### Criando fatores
+
+Vetores não são objetos R, por isso apesar de ter classe não tem atributos
+
+```{r}
+estados <- c("RJ","SP", "MG")
+estados
+class(estados)
+attributes(estados)
+```
+
+Para criar um fato use a função factor
+
+```{r}
+estadosF <- factor(estados)
+estadosF
+```
+
+Agora ele tem atributos
+
+```{r}
+class(estadosF)
+attributes(estadosF)
+
+```
+
+A função table() serve para contar os valores
+
+```{r}
+pessoas <- c("Rui", "Bia", "Ana", "Leo", "Nat", "Rui", "Leo", "Bia", "Leo")
+
+pessoas
+
+table(pessoas)
+
+```
+
+```{r}
+pessoasn <- factor(pessoas, levels = c("Ana", "Rui", "Nat", "Bia", "Leo", "Bob"))
+pessoasn
+
+table(pessoasn)
+
+```
+
+Reagrupamento de fator
+
+```{r}
+pessoassite <- pessoasn
+levels(pessoassite)
+levels(pessoassite) <- c("Site", "Site", "Site", "Site", "App", "App")
+levels(pessoassite)
+table(pessoassite)
+```
 
 

@@ -179,4 +179,49 @@ levels(pessoassite)
 table(pessoassite)
 ```
 
+Ordenação de fatores
+
+```{r}
+grau <- c("meio","baixo","medio","baixo","alto","medio","alto","meio")
+grau
+
+table(grau)
+factor(grau, ord=T)
+
+factor(grau, ordered = T, levels = c("baixo", "medio", "alto"))
+```
+
+Pode ser feito com a função ordered
+
+```{r}
+ordered(grau, levels = c("baixo", "medio", "alto"))
+```
+
+Ordem inversa
+
+```{r}
+vec <- 1:10
+vec
+rev(vec)
+```
+
+Criação dinâmica, rnorm cria numeros dinamicos a partir de uma media e um desvio padrão
+
+```{r}
+vec <- round(rnorm(7, m = 70, sd = 10))
+vec
+```
+
+Ordernar os valores
+
+```{r}
+sort(vec)
+```
+
+Criação de ranks
+
+```{r}
+rank(vec)
+sort(rank(vec))
+```
 

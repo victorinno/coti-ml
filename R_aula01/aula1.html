@@ -262,6 +262,42 @@ levels(pessoassite)</code></pre>
 <pre><code>## pessoassite
 ## Site  App 
 ##    6    3</code></pre>
+<p>Ordenação de fatores</p>
+<pre class="r"><code>grau &lt;- c(&quot;meio&quot;,&quot;baixo&quot;,&quot;medio&quot;,&quot;baixo&quot;,&quot;alto&quot;,&quot;medio&quot;,&quot;alto&quot;,&quot;meio&quot;)
+grau</code></pre>
+<pre><code>## [1] &quot;meio&quot;  &quot;baixo&quot; &quot;medio&quot; &quot;baixo&quot; &quot;alto&quot;  &quot;medio&quot; &quot;alto&quot;  &quot;meio&quot;</code></pre>
+<pre class="r"><code>table(grau)</code></pre>
+<pre><code>## grau
+##  alto baixo medio  meio 
+##     2     2     2     2</code></pre>
+<pre class="r"><code>factor(grau, ord=T)</code></pre>
+<pre><code>## [1] meio  baixo medio baixo alto  medio alto  meio 
+## Levels: alto &lt; baixo &lt; medio &lt; meio</code></pre>
+<pre class="r"><code>factor(grau, ordered = T, levels = c(&quot;baixo&quot;, &quot;medio&quot;, &quot;alto&quot;))</code></pre>
+<pre><code>## [1] &lt;NA&gt;  baixo medio baixo alto  medio alto  &lt;NA&gt; 
+## Levels: baixo &lt; medio &lt; alto</code></pre>
+<p>Pode ser feito com a função ordered</p>
+<pre class="r"><code>ordered(grau, levels = c(&quot;baixo&quot;, &quot;medio&quot;, &quot;alto&quot;))</code></pre>
+<pre><code>## [1] &lt;NA&gt;  baixo medio baixo alto  medio alto  &lt;NA&gt; 
+## Levels: baixo &lt; medio &lt; alto</code></pre>
+<p>Ordem inversa</p>
+<pre class="r"><code>vec &lt;- 1:10
+vec</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>rev(vec)</code></pre>
+<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
+<p>Criação dinâmica, rnorm cria numeros dinamicos a partir de uma media e um desvio padrão</p>
+<pre class="r"><code>vec &lt;- round(rnorm(7, m = 70, sd = 10))
+vec</code></pre>
+<pre><code>## [1] 72 67 72 77 83 74 74</code></pre>
+<p>Ordernar os valores</p>
+<pre class="r"><code>sort(vec)</code></pre>
+<pre><code>## [1] 67 72 72 74 74 77 83</code></pre>
+<p>Criação de ranks</p>
+<pre class="r"><code>rank(vec)</code></pre>
+<pre><code>## [1] 2.5 1.0 2.5 6.0 7.0 4.5 4.5</code></pre>
+<pre class="r"><code>sort(rank(vec))</code></pre>
+<pre><code>## [1] 1.0 2.5 2.5 4.5 4.5 6.0 7.0</code></pre>
 </div>
 </div>
 

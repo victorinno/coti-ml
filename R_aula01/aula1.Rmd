@@ -225,3 +225,180 @@ rank(vec)
 sort(rank(vec))
 ```
 
+Wich, função parecida com o rank, ela recebe um criterio e todos que passarem por essa regra ele retorna a posição
+
+O which max e o min retorna a pimeira maior/menor ocorrência, ou seja, se houver valores repetidos ele retornará o primeiro.
+
+```{r}
+which(vec > 70)
+
+which.max(vec)
+which.min(vec)
+```
+
+Remover elementos
+
+```{r}
+vec[-5]
+vec
+```
+
+remover intervalos
+
+```{r}
+vec[-(2:4)]
+vec
+```
+
+# Matrix
+
+Criar matrizes
+
+```{r}
+ml <- matrix(1:6, nc = 3)
+
+ml
+```
+
+```{r}
+m2 <- matrix(10 * (1:6), nc = 3)
+m2
+```
+
+Operações de matris
+
+```{r}
+ml + m2
+ml - m2
+ml * m2
+ml / m2
+```
+
+Produto cruzado (dot product)
+
+```{r}
+ml ** m2
+```
+
+Transposição
+
+```{r}
+t(ml)
+```
+
+Tamanho
+
+```{r}
+length(ml)
+```
+
+Dimensões
+
+```{r}
+dim(ml)
+```
+
+para saber o número de colunas
+
+```{r}
+ncol(ml)
+```
+
+para pegar um elemento da matriz
+
+```{r}
+ml[1,2]
+
+ml[2,]
+
+ml[,1]
+```
+
+Para colocar nomes de uma matriz
+
+```{r}
+dimnames(ml)
+
+dimnames(ml) <- list(c("l1","l2"), c("c1", "c2", "c3"))
+
+ml
+print('')
+ml["l1",]
+```
+
+Para juntar 
+
+```{r}
+m2 <- cbind(1:5, 6:10)
+m2
+
+```
+
+Funções para matrix
+
+Somando os elementos de acordo com a dimensão: 1 - linha, 2 coluna (nesse caso é a dimensão, quanto mais dimensoes maiores são os casos possíveis)
+
+```{r}
+margin.table(ml, margin = 1)
+
+margin.table(ml, margin = 1)[1]
+
+margin.table(ml, margin = 1)[2]
+```
+
+Apply faz o mesmo que o margin, mas você pode passar a função de agregação, o número 1 é a dimensão também
+
+```{r}
+apply(ml, 1, sum)
+```
+
+Somatorio de colunas
+
+```{r}
+colSums(ml)
+```
+
+## Array
+
+Com o array podemos ter mais de 3 dimensoes
+
+Array com 3 dimensoes e 24 elementos
+
+```{r}
+ar1 <- array(1:24, dim = c(3,4,2))
+ar1
+
+```
+
+```{r}
+ar1[,,]
+```
+
+
+```{r}
+ar1[,2:3,]
+```
+
+```{r}
+ar1[2,,1]
+```
+
+Para trazer as segundas linhas das 2 dimensoes, cuidado com o resultado que ele traz uma matriz, mas na verdade são as duas colunas
+
+```{r}
+ar1[2,,]
+```
+
+### Nomenado as dimensoes
+
+```{r}
+dimnames(ar1)
+
+dimnames(ar1) <- list(c("baixo", "medio", "alto"), paste("col", +1:4, sep=" "), c("masculino", "feminino"))
+
+dimnames(ar1)
+
+ar1
+
+```
+

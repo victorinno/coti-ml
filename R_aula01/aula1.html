@@ -251,6 +251,17 @@ pessoasn</code></pre>
 <pre><code>## pessoasn
 ## Ana Rui Nat Bia Leo Bob 
 ##   1   2   1   2   3   0</code></pre>
+<p>Reagrupamento de fator</p>
+<pre class="r"><code>pessoassite &lt;- pessoasn
+levels(pessoassite)</code></pre>
+<pre><code>## [1] &quot;Ana&quot; &quot;Rui&quot; &quot;Nat&quot; &quot;Bia&quot; &quot;Leo&quot; &quot;Bob&quot;</code></pre>
+<pre class="r"><code>levels(pessoassite) &lt;- c(&quot;Site&quot;, &quot;Site&quot;, &quot;Site&quot;, &quot;Site&quot;, &quot;App&quot;, &quot;App&quot;)
+levels(pessoassite)</code></pre>
+<pre><code>## [1] &quot;Site&quot; &quot;App&quot;</code></pre>
+<pre class="r"><code>table(pessoassite)</code></pre>
+<pre><code>## pessoassite
+## Site  App 
+##    6    3</code></pre>
 </div>
 </div>
 

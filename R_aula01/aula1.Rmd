@@ -1,0 +1,124 @@
+---
+title: "R Aula 01"
+output:
+  html_document:
+    df_print: paged
+---
+
+Primeira aula de R
+
+6 aulas de R -> RStudio
+7 Aulas de Python -> Anaconda
+
+R:
+
+* Linguagem R
+* Estatística e probabilidade
+* treinamento
+* aprendizagem de máquina
+
+## Declaração de variável
+
+```{r}
+c <- 10
+c
+
+
+```
+
+## Criação de vetores
+
+vetores numéricos
+
+```{r}
+vetor <- c(1,2,3,4,5,6,7)
+vetor
+```
+
+Vetores de caracteres
+
+```{r}
+nomes <- c("maria", "jose", "joao")
+nomes
+```
+
+acesso por posição
+
+A posição do R inicial é 1
+
+```{r}
+nomes[1]
+```
+
+Para pegar o tamanho do vetor é com a função R
+
+```{r}
+length(nomes)
+length(vetor)
+```
+
+para validar se é vetor usar a função is.vector
+
+```{r}
+is.vector(nomes)
+```
+
+pode-se criar um vetor numérico a partir de um intervalo
+
+```{r}
+numeros <- 1:10
+numeros
+```
+
+a função seq também cria sequência numérica
+
+```{r}
+numeros2 <- seq(0,1,by=0.1)
+numeros2
+```
+
+```{r}
+c("a", numeros)
+```
+
+Operações matemáticas são aplicadas sobre todo o array
+
+```{r}
+operacao <- c(10,20,30,40,50)
+operacao * 3
+operacao - 3
+operacao + 3
+operacao / 3
+```
+
+Arredondamentos são aplicados sobre todo o array
+
+```{r}
+round(operacao / 3)
+```
+
+Para criar vetores de numeros repetidos
+
+```{r}
+repetidos <- rep(1,5)
+repetidos
+
+repetidos <- rep(c(1,2), c(3,4))
+repetidos
+```
+
+função utilizada para criar vetores de caractes: paste()
+
+```{r}
+n <-c("lucas", "bia", "rui")
+n
+
+paste(n, 1:3)
+paste("maria", 2)
+
+paste("T", 1:3, sep = "")
+rep(paste("T", 1:3, sep = ""), c(4,4,3))
+```
+
+
+

@@ -402,3 +402,86 @@ ar1
 
 ```
 
+Carregar conjuntos de dados
+
+```{r}
+data('Titanic')
+
+Titanic
+```
+
+Dimensoes do titanic
+
+```{r}
+dim(Titanic)
+```
+
+Somatorio
+
+```{r}
+sum(Titanic)
+```
+
+Nomes das dimensoes
+
+```{r}
+dimnames(Titanic)
+```
+
+Somatorio dos passageiros da classe crew
+
+```{r}
+sum(Titanic[4,,,])
+```
+
+Porcentagem de crew
+
+```{r}
+sum(Titanic[4,,,]) / sum(Titanic) * 100
+```
+
+Quantos sobreviveram
+
+```{r}
+sum(Titanic[4,,,2])
+```
+
+Porcentagem relativa dos sobreviventes da classe crew
+
+```{r}
+sum(Titanic[4,,,2]) / sum(Titanic[4,,,]) * 100
+```
+
+Fazendo o mesmo com outras funções
+
+Somando todas a linhas (dimensão = 1)
+
+```{r}
+margin.table(Titanic, margin = 1)
+```
+
+Agora a soma dos crews que sobreviveram
+
+```{r}
+margin.table(Titanic, margin = 1)[2]
+```
+
+Procentagem relativa
+
+```{r}
+crew_sobreviventes <- margin.table(Titanic[,,,2], margin = 1)[4]
+crew_sobreviventes
+
+crew_sobreviventes / margin.table(Titanic[4,,,], margin = 1)[1] * 100
+
+```
+
+Apply
+
+```{r}
+
+apply(Titanic[,,,2],1,sum)[4] / apply(Titanic,1,sum)[4]  * 100
+
+```
+
+

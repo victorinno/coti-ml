@@ -289,33 +289,33 @@ vec</code></pre>
 <p>Criação dinâmica, rnorm cria numeros dinamicos a partir de uma media e um desvio padrão</p>
 <pre class="r"><code>vec &lt;- round(rnorm(7, m = 70, sd = 10))
 vec</code></pre>
-<pre><code>## [1] 83 78 56 67 68 60 59</code></pre>
+<pre><code>## [1] 72 75 69 61 80 71 62</code></pre>
 <p>Ordernar os valores</p>
 <pre class="r"><code>sort(vec)</code></pre>
-<pre><code>## [1] 56 59 60 67 68 78 83</code></pre>
+<pre><code>## [1] 61 62 69 71 72 75 80</code></pre>
 <p>Criação de ranks</p>
 <pre class="r"><code>rank(vec)</code></pre>
-<pre><code>## [1] 7 6 1 4 5 3 2</code></pre>
+<pre><code>## [1] 5 6 3 1 7 4 2</code></pre>
 <pre class="r"><code>sort(rank(vec))</code></pre>
 <pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
 <p>Wich, função parecida com o rank, ela recebe um criterio e todos que passarem por essa regra ele retorna a posição</p>
 <p>O which max e o min retorna a pimeira maior/menor ocorrência, ou seja, se houver valores repetidos ele retornará o primeiro.</p>
 <pre class="r"><code>which(vec &gt; 70)</code></pre>
-<pre><code>## [1] 1 2</code></pre>
+<pre><code>## [1] 1 2 5 6</code></pre>
 <pre class="r"><code>which.max(vec)</code></pre>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 5</code></pre>
 <pre class="r"><code>which.min(vec)</code></pre>
-<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 4</code></pre>
 <p>Remover elementos</p>
 <pre class="r"><code>vec[-5]</code></pre>
-<pre><code>## [1] 83 78 56 67 60 59</code></pre>
+<pre><code>## [1] 72 75 69 61 71 62</code></pre>
 <pre class="r"><code>vec</code></pre>
-<pre><code>## [1] 83 78 56 67 68 60 59</code></pre>
+<pre><code>## [1] 72 75 69 61 80 71 62</code></pre>
 <p>remover intervalos</p>
 <pre class="r"><code>vec[-(2:4)]</code></pre>
-<pre><code>## [1] 83 68 60 59</code></pre>
+<pre><code>## [1] 72 80 71 62</code></pre>
 <pre class="r"><code>vec</code></pre>
-<pre><code>## [1] 83 78 56 67 68 60 59</code></pre>
+<pre><code>## [1] 72 75 69 61 80 71 62</code></pre>
 </div>
 </div>
 <div id="matrix" class="section level1">
@@ -595,6 +595,66 @@ crew_sobreviventes</code></pre>
 <pre class="r"><code>apply(Titanic[,,,2],1,sum)[4] / apply(Titanic,1,sum)[4]  * 100</code></pre>
 <pre><code>##    Crew 
 ## 23.9548</code></pre>
+<p>Quantidade de crianças do sexo feminino</p>
+<pre class="r"><code>dimnames(Titanic)</code></pre>
+<pre><code>## $Class
+## [1] &quot;1st&quot;  &quot;2nd&quot;  &quot;3rd&quot;  &quot;Crew&quot;
+## 
+## $Sex
+## [1] &quot;Male&quot;   &quot;Female&quot;
+## 
+## $Age
+## [1] &quot;Child&quot; &quot;Adult&quot;
+## 
+## $Survived
+## [1] &quot;No&quot;  &quot;Yes&quot;</code></pre>
+<pre class="r"><code>sum(Titanic[,2,1,])</code></pre>
+<pre><code>## [1] 45</code></pre>
+<pre class="r"><code>margin.table(Titanic, margin = 2)</code></pre>
+<pre><code>## Sex
+##   Male Female 
+##   1731    470</code></pre>
+<pre class="r"><code>margin.table(Titanic[,,1,], margin = 2)</code></pre>
+<pre><code>## Sex
+##   Male Female 
+##     64     45</code></pre>
+<pre class="r"><code>sobreviventes_cirancas_feminio &lt;- margin.table(Titanic[,,1,2], margin = 2)[2]
+sobreviventes_cirancas_feminio</code></pre>
+<pre><code>## Female 
+##     28</code></pre>
+<pre class="r"><code>margin.table(Titanic[,,1,], margin = 2)[2]</code></pre>
+<pre><code>## Female 
+##     45</code></pre>
+<pre class="r"><code>apply(Titanic[,,1,], 2, sum)[2]</code></pre>
+<pre><code>## Female 
+##     45</code></pre>
+<p>Para saber o que calcular é importante buscar a classe mais global do problema, para saber qual a classe mais global é a que tem o menor nivel o dimnames.</p>
+<pre class="r"><code>dimnames(Titanic)</code></pre>
+<pre><code>## $Class
+## [1] &quot;1st&quot;  &quot;2nd&quot;  &quot;3rd&quot;  &quot;Crew&quot;
+## 
+## $Sex
+## [1] &quot;Male&quot;   &quot;Female&quot;
+## 
+## $Age
+## [1] &quot;Child&quot; &quot;Adult&quot;
+## 
+## $Survived
+## [1] &quot;No&quot;  &quot;Yes&quot;</code></pre>
+<p>Por exemplo, obter todos os homens da primeira classe, teria que separar primeiro os de primeira classe e depois os homens, senão o R daria um valor dividido</p>
+<pre class="r"><code>print(&quot;correto&quot;)</code></pre>
+<pre><code>## [1] &quot;correto&quot;</code></pre>
+<pre class="r"><code>margin.table(Titanic[,1,,], margin = 1)</code></pre>
+<pre><code>## Class
+##  1st  2nd  3rd Crew 
+##  180  179  510  862</code></pre>
+<pre class="r"><code>margin.table(Titanic[,1,,], margin = 1)[1]</code></pre>
+<pre><code>## 1st 
+## 180</code></pre>
+<p>Agora além do filtro anterior os que sobreviveram</p>
+<pre class="r"><code>margin.table(Titanic[,1,,2], margin = 1)[1]</code></pre>
+<pre><code>## 1st 
+##  62</code></pre>
 </div>
 </div>
 </div>

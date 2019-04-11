@@ -484,4 +484,38 @@ apply(Titanic[,,,2],1,sum)[4] / apply(Titanic,1,sum)[4]  * 100
 
 ```
 
+Quantidade de crianças do sexo feminino
+
+```{r}
+dimnames(Titanic)
+sum(Titanic[,2,1,])
+margin.table(Titanic, margin = 2)
+margin.table(Titanic[,,1,], margin = 2)
+sobreviventes_cirancas_feminio <- margin.table(Titanic[,,1,2], margin = 2)[2]
+sobreviventes_cirancas_feminio
+margin.table(Titanic[,,1,], margin = 2)[2]
+apply(Titanic[,,1,], 2, sum)[2]
+```
+
+Para saber o que calcular é importante buscar a classe mais global do problema, para saber qual a classe mais global é a que tem o menor nivel o dimnames.
+
+```{r}
+dimnames(Titanic)
+```
+
+
+Por exemplo, obter todos os homens da primeira classe, teria que separar primeiro os de primeira classe e depois os homens, senão o R daria um valor dividido
+
+```{r}
+print("correto")
+margin.table(Titanic[,1,,], margin = 1)
+margin.table(Titanic[,1,,], margin = 1)[1]
+
+```
+
+Agora além do filtro anterior os que sobreviveram
+
+```{r}
+margin.table(Titanic[,1,,2], margin = 1)[1]
+```
 

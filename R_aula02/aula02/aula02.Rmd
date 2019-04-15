@@ -80,4 +80,64 @@ Visualizando os dados de uma lista
 #View(ls('package:datasets')) no R normal
 ```
 
+##Datasets do R
+
+Dim retorna a quantidade de registro por numero de colunas, no mtcars são 32 registros com 11 colunas
+
+```{r}
+data('mtcars')
+
+dim(mtcars)
+```
+
+O fix abre uma janela para alterar os arquivos
+
+```{r}
+#fix(mtcars)
+```
+
+Summary retorna estatística básica
+
+```{r}
+summary(mtcars)
+```
+
+Os datasets do R possuem um help
+
+```{r}
+#help("mtcars")
+```
+
+##Carregando arquivos do xlsx
+
+Para carregar o XLSX precisa das bibliotecas gdata e gtools com dependencias = T
+
+```{r}
+library('gdata')
+library('gtools')
+
+arquivo <- file.path('teste4.xlsx')
+
+sheetCount(arquivo)
+
+```
+
+```{r}
+sheetNames(arquivo)
+```
+
+```{r}
+clientes <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 1)
+clientes
+```
+
+```{r}
+produtos <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 2)
+produtos
+```
+
+```{r}
+enderecos <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 3)
+enderecos
+```
 

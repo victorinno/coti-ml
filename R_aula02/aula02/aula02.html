@@ -242,6 +242,141 @@ ls('package:datasets')</code></pre>
 <p>Visualizando os dados de uma lista</p>
 <pre class="r"><code>#View(ls('package:datasets')) no R normal</code></pre>
 </div>
+<div id="datasets-do-r" class="section level2">
+<h2>Datasets do R</h2>
+<p>Dim retorna a quantidade de registro por numero de colunas, no mtcars são 32 registros com 11 colunas</p>
+<pre class="r"><code>data('mtcars')
+
+dim(mtcars)</code></pre>
+<pre><code>## [1] 32 11</code></pre>
+<p>O fix abre uma janela para alterar os arquivos</p>
+<pre class="r"><code>#fix(mtcars)</code></pre>
+<p>Summary retorna estatística básica</p>
+<pre class="r"><code>summary(mtcars)</code></pre>
+<pre><code>##       mpg             cyl             disp             hp       
+##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+##  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+##  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+##  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+##  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+##       drat             wt             qsec             vs        
+##  Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+##  1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+##  Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+##  Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+##  3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+##  Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+##        am              gear            carb      
+##  Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :0.0000   Median :4.000   Median :2.000  
+##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :1.0000   Max.   :5.000   Max.   :8.000</code></pre>
+<p>Os datasets do R possuem um help</p>
+<pre class="r"><code>#help(&quot;mtcars&quot;)</code></pre>
+</div>
+<div id="carregando-arquivos-do-xlsx" class="section level2">
+<h2>Carregando arquivos do xlsx</h2>
+<p>Para carregar o XLSX precisa das bibliotecas gdata e gtools com dependencias = T</p>
+<pre class="r"><code>library('gdata')</code></pre>
+<pre><code>## Warning: package 'gdata' was built under R version 3.4.4</code></pre>
+<pre><code>## gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.</code></pre>
+<pre><code>## </code></pre>
+<pre><code>## gdata: read.xls support for 'XLSX' (Excel 2007+) files ENABLED.</code></pre>
+<pre><code>## 
+## Attaching package: 'gdata'</code></pre>
+<pre><code>## The following object is masked from 'package:stats':
+## 
+##     nobs</code></pre>
+<pre><code>## The following object is masked from 'package:utils':
+## 
+##     object.size</code></pre>
+<pre><code>## The following object is masked from 'package:base':
+## 
+##     startsWith</code></pre>
+<pre class="r"><code>library('gtools')
+
+arquivo &lt;- file.path('teste4.xlsx')
+
+sheetCount(arquivo)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>sheetNames(arquivo)</code></pre>
+<pre><code>## [1] &quot;clientes&quot;  &quot;produtos&quot;  &quot;enderecos&quot;</code></pre>
+<pre class="r"><code>clientes &lt;- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 1)</code></pre>
+<pre><code>## Using perl at C:\Perl64\bin\perl.exe 
+## Using perl at C:\Perl64\bin\perl.exe 
+## 
+## Converting xls file
+##     &quot;teste4.xlsx&quot; 
+## to csv  file 
+##     &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed004d6c7049.csv&quot; 
+## ... 
+## 
+## Executing ' &quot;C:\Perl64\bin\perl.exe&quot; &quot;C:/Users/Aluno 10/Documents/R/win-library/3.4/gdata/perl/xls2csv.pl&quot;  &quot;teste4.xlsx&quot; &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed004d6c7049.csv&quot; &quot;1&quot; '... 
+## 
+## 0 
+## 
+## Done.
+## 
+## Reading csv file  &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed004d6c7049.csv&quot; ...
+## Done.</code></pre>
+<pre class="r"><code>clientes</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["nome"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["email"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["sexo"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"Bisa","2":"bia@gmail.com","3":"f"},{"1":"Luan","2":"luan@gmail.com","3":"m"},{"1":"Ana","2":"ana@gmailc.om","3":"f"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>produtos &lt;- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 2)</code></pre>
+<pre><code>## Using perl at C:\Perl64\bin\perl.exe 
+## Using perl at C:\Perl64\bin\perl.exe 
+## 
+## Converting xls file
+##     &quot;teste4.xlsx&quot; 
+## to csv  file 
+##     &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed002b2b5d01.csv&quot; 
+## ... 
+## 
+## Executing ' &quot;C:\Perl64\bin\perl.exe&quot; &quot;C:/Users/Aluno 10/Documents/R/win-library/3.4/gdata/perl/xls2csv.pl&quot;  &quot;teste4.xlsx&quot; &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed002b2b5d01.csv&quot; &quot;2&quot; '... 
+## 
+## 0 
+## 
+## Done.
+## 
+## Reading csv file  &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed002b2b5d01.csv&quot; ...
+## Done.</code></pre>
+<pre class="r"><code>produtos</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["codigo"],"name":[1],"type":["int"],"align":["right"]},{"label":["preco"],"name":[2],"type":["int"],"align":["right"]},{"label":["quantidade"],"name":[3],"type":["int"],"align":["right"]},{"label":["nome"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"1","2":"100","3":"3","4":"mouse"},{"1":"2","2":"200","3":"4","4":"teclado"},{"1":"3","2":"300","3":"5","4":"fone"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>enderecos &lt;- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 3)</code></pre>
+<pre><code>## Using perl at C:\Perl64\bin\perl.exe 
+## Using perl at C:\Perl64\bin\perl.exe 
+## 
+## Converting xls file
+##     &quot;teste4.xlsx&quot; 
+## to csv  file 
+##     &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed0045f11da7.csv&quot; 
+## ... 
+## 
+## Executing ' &quot;C:\Perl64\bin\perl.exe&quot; &quot;C:/Users/Aluno 10/Documents/R/win-library/3.4/gdata/perl/xls2csv.pl&quot;  &quot;teste4.xlsx&quot; &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed0045f11da7.csv&quot; &quot;3&quot; '... 
+## 
+## 0 
+## 
+## Done.
+## 
+## Reading csv file  &quot;C:\Users\ALUNO1~1\AppData\Local\Temp\RtmpuIkdcY\filed0045f11da7.csv&quot; ...
+## Done.</code></pre>
+<pre class="r"><code>enderecos</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["bairro"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["rua"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["cidade"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"Centro","2":"av rio branco","3":"Rio de Janeiro"},{"1":"Quintino","2":"Garcia Pires","3":"Rio de Janeiro"},{"1":"Portela","2":"Manuel Bandeira","3":"São Paulo"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
 </div>
 
 

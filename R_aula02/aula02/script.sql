@@ -34,3 +34,6 @@ INSERT INTO produto(nome, preco, quantidade) VALUES('TV LCD', 1350.0, 5);
 INSERT INTO produto(nome, preco, quantidade) VALUES('Monitor', 450.0, 5);
 INSERT INTO produto(nome, preco, quantidade) VALUES('TV LCD 42', 800.0, 6);
 INSERT INTO produto(nome, preco, quantidade) VALUES('Lava Roupas Brastemp', 1500.0, 7);
+
+
+select * from produto;

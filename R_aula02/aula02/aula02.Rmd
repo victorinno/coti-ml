@@ -181,3 +181,54 @@ sheetNames(xlsfile)
 ```
 
 #Conexão com banco de dados
+
+Utilizando o postgresql
+
+```{r}
+library('RPostgreSQL')
+```
+
+```{r}
+con <- dbConnect(PostgreSQL(), user = 'postgres', password = 'coti', dbname = 'aular')
+```
+
+Executar uma consulta no banco de dados pelo R
+
+```{r}
+rs <- dbSendQuery(con, 'select * from produto order by nome')
+rs
+```
+
+precisa dar fetch no cursor
+
+```{r}
+df <- fetch(rs, n = -1)
+df
+```
+
+```{r}
+dim(df)
+```
+
+```{r}
+head(df)
+```
+
+Verificar quais as tabelas que tem no banco
+
+```{r}
+dbListTables(con)
+```
+
+Getquery já busca uma consulta pronta
+
+```{r}
+produtos <- dbGetQuery(con, 'select * from produto order by preco desc')
+
+produtos
+
+
+```
+
+
+

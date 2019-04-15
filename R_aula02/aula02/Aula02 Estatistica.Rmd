@@ -1,0 +1,130 @@
+---
+title: "R Estatística"
+output: html_notebook
+---
+
+Ciência que utiliza das teorias probabilísticas para estudos de observação e experimento.
+
+#Experimento e Observação
+
+##Observação
+Estudo em que os elementos não são afetados pela pesquisa
+
+##Experimento
+Condições ou tratamentos são impostos a grupos, para avaliar o resultado. Aqui possui relação de causa e efeito.
+
+#Variáveis
+
+##Quantitativas - Numéricas
+* Contínuas
+* Discretas
+##Qualitativas - Categóricas
+
+#Amostra
+Parte de uma população, selecionada usando uma técnica que permita chances iguais aos elementos da população.
+
+* Separação da popualção para teste/treino/validação
+* Experiemntos diferentes
+
+As vezes consfguimos em uma proporção menor de dados efeitos iguais ou muito semelhantes 
+
+##Amostra aleatória simples
+Elementos retirados da população de forma aleatoria
+Chances iguais de serem escolhidos para todos os elementos
+
+* Com reposição
+* Sem reposição
+
+##Amostra estratificada
+Popualção dividia em estratos
+
+##Amostra sistemática
+É escolhido um número aleatório e a partir dele é criado um intervalo para os demais elementos
+
+#Censo
+Quando se pesquisa todos os indivíduos da população
+
+#Inferência
+Conclusões tiradas a partir de uma amostra
+
+#Enviesamento
+Subestima ou sperestima o parametro da população
+
+#Custo
+Margem de erro e nível de confiança
+
+#Funções no R
+Sample() -> amostra aleatoria
+Strata() -> amostra estratificada
+S.SY() -> amostra sistemática
+
+```{r}
+data('iris')
+dim(iris)
+```
+
+```{r}
+head(iris)
+```
+
+Criando uma amostra aleatória em dois conjuntos de 0 ou 1, num universo de 150 números aleatórios com probabilidade igual entre ambos.
+
+Como as possibilidades são menor que o número total gerado haverá reposição, por isso do replace = T.
+
+
+```{r}
+amostra <- sample(x = c(0,1), size = 150, replace = T, prob = c(0.5,0.5))
+amostra
+```
+
+Não será criado um vetor de 50%, mas algo próximo
+
+```{r}
+length(amostra[amostra == 1])
+```
+
+```{r}
+length(amostra[amostra == 0])
+```
+
+```{r}
+class(amostra)
+```
+
+Função set.seed() -> mantém constante o modelo de aleatoriedade
+
+```{r}
+set.seed(2345)
+
+sample(c(100), 1)
+```
+
+#Geração de amostra estratificada
+
+Usando o conjunto de dados iris para analisar o atributo especies
+Gerar amostras de tamanho fixo escolhidos aleatoriamente
+
+Summary comando para descrever o conjunto de dados
+
+```{r}
+summary(iris)
+```
+
+Pacote para amostras estratificadas: sampling
+
+```{r}
+library("sampling")
+```
+
+srswor -> sem reposição
+
+```{r}
+amostrairis <- strata(iris, c("Species"), size = c(25,25,25), method = 'srswor')
+amostrairis
+```
+
+```{r}
+summary(amostrairis)
+```
+
+

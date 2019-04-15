@@ -1,5 +1,56 @@
 ---
 title: "R Aula 02"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
+
+#Data Frame
+
+```{r}
+d1 <- data.frame(x = 1:10, y = c(51, 54, 61, 67, 68, 75, 77, 75, 80, 82))
+d1
+```
+
+```{r}
+names(d1)
+```
+
+```{r}
+class(d1)
+```
+
+Acessando os dados das colunas do data frame
+
+```{r}
+print(d1$x)
+print(d1$y)
+```
+
+plotando os dados da data frame
+
+```{r}
+plot(d1)
+```
+
+```{r}
+plot(d1$x, d1$y)
+```
+
+#Carregando arquivos
+
+##Arquivos de textos
+
+O read table vai pegar as linhas e usar o separador de espaço por padrão
+
+```{r}
+ex1 <- read.table('teste.txt')
+ex1
+```
+
+```{r}
+ex2 <-read.table('teste2.txt', head = T)
+ex2
+```
+
 

@@ -58,3 +58,26 @@ ex3 <- read.table('teste3.csv', head = T, sep = ';', dec = ',')
 ex3
 ```
 
+O salário é numérico pq ele tinha uma ',' como separador
+
+```{r}
+class(ex3$salario)
+```
+
+##Exibir os datasets
+
+Para exibir todos os datasets que vem no r
+
+```{r}
+#data() no R normal
+
+ls('package:datasets')
+```
+
+Visualizando os dados de uma lista
+
+```{r}
+#View(ls('package:datasets')) no R normal
+```
+
+

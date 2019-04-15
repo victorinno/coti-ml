@@ -177,6 +177,70 @@ ex3</code></pre>
 {"columns":[{"label":["nome"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["email"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["sexo"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["salario"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"mari","2":"maria@gmail.com","3":"m","4":"100.20"},{"1":"lucas","2":"lucas@gmail.com","3":"m","4":"300.40"},{"1":"bruna","2":"bruna@gmail.com.com","3":"f","4":"345.67"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<p>O salário é numérico pq ele tinha uma ‘,’ como separador</p>
+<pre class="r"><code>class(ex3$salario)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+</div>
+<div id="exibir-os-datasets" class="section level2">
+<h2>Exibir os datasets</h2>
+<p>Para exibir todos os datasets que vem no r</p>
+<pre class="r"><code>#data() no R normal
+
+ls('package:datasets')</code></pre>
+<pre><code>##   [1] &quot;ability.cov&quot;           &quot;airmiles&quot;             
+##   [3] &quot;AirPassengers&quot;         &quot;airquality&quot;           
+##   [5] &quot;anscombe&quot;              &quot;attenu&quot;               
+##   [7] &quot;attitude&quot;              &quot;austres&quot;              
+##   [9] &quot;beaver1&quot;               &quot;beaver2&quot;              
+##  [11] &quot;BJsales&quot;               &quot;BJsales.lead&quot;         
+##  [13] &quot;BOD&quot;                   &quot;cars&quot;                 
+##  [15] &quot;ChickWeight&quot;           &quot;chickwts&quot;             
+##  [17] &quot;co2&quot;                   &quot;CO2&quot;                  
+##  [19] &quot;crimtab&quot;               &quot;discoveries&quot;          
+##  [21] &quot;DNase&quot;                 &quot;esoph&quot;                
+##  [23] &quot;euro&quot;                  &quot;euro.cross&quot;           
+##  [25] &quot;eurodist&quot;              &quot;EuStockMarkets&quot;       
+##  [27] &quot;faithful&quot;              &quot;fdeaths&quot;              
+##  [29] &quot;Formaldehyde&quot;          &quot;freeny&quot;               
+##  [31] &quot;freeny.x&quot;              &quot;freeny.y&quot;             
+##  [33] &quot;HairEyeColor&quot;          &quot;Harman23.cor&quot;         
+##  [35] &quot;Harman74.cor&quot;          &quot;Indometh&quot;             
+##  [37] &quot;infert&quot;                &quot;InsectSprays&quot;         
+##  [39] &quot;iris&quot;                  &quot;iris3&quot;                
+##  [41] &quot;islands&quot;               &quot;JohnsonJohnson&quot;       
+##  [43] &quot;LakeHuron&quot;             &quot;ldeaths&quot;              
+##  [45] &quot;lh&quot;                    &quot;LifeCycleSavings&quot;     
+##  [47] &quot;Loblolly&quot;              &quot;longley&quot;              
+##  [49] &quot;lynx&quot;                  &quot;mdeaths&quot;              
+##  [51] &quot;morley&quot;                &quot;mtcars&quot;               
+##  [53] &quot;nhtemp&quot;                &quot;Nile&quot;                 
+##  [55] &quot;nottem&quot;                &quot;npk&quot;                  
+##  [57] &quot;occupationalStatus&quot;    &quot;Orange&quot;               
+##  [59] &quot;OrchardSprays&quot;         &quot;PlantGrowth&quot;          
+##  [61] &quot;precip&quot;                &quot;presidents&quot;           
+##  [63] &quot;pressure&quot;              &quot;Puromycin&quot;            
+##  [65] &quot;quakes&quot;                &quot;randu&quot;                
+##  [67] &quot;rivers&quot;                &quot;rock&quot;                 
+##  [69] &quot;Seatbelts&quot;             &quot;sleep&quot;                
+##  [71] &quot;stack.loss&quot;            &quot;stack.x&quot;              
+##  [73] &quot;stackloss&quot;             &quot;state.abb&quot;            
+##  [75] &quot;state.area&quot;            &quot;state.center&quot;         
+##  [77] &quot;state.division&quot;        &quot;state.name&quot;           
+##  [79] &quot;state.region&quot;          &quot;state.x77&quot;            
+##  [81] &quot;sunspot.month&quot;         &quot;sunspot.year&quot;         
+##  [83] &quot;sunspots&quot;              &quot;swiss&quot;                
+##  [85] &quot;Theoph&quot;                &quot;Titanic&quot;              
+##  [87] &quot;ToothGrowth&quot;           &quot;treering&quot;             
+##  [89] &quot;trees&quot;                 &quot;UCBAdmissions&quot;        
+##  [91] &quot;UKDriverDeaths&quot;        &quot;UKgas&quot;                
+##  [93] &quot;USAccDeaths&quot;           &quot;USArrests&quot;            
+##  [95] &quot;UScitiesD&quot;             &quot;USJudgeRatings&quot;       
+##  [97] &quot;USPersonalExpenditure&quot; &quot;uspop&quot;                
+##  [99] &quot;VADeaths&quot;              &quot;volcano&quot;              
+## [101] &quot;warpbreaks&quot;            &quot;women&quot;                
+## [103] &quot;WorldPhones&quot;           &quot;WWWusage&quot;</code></pre>
+<p>Visualizando os dados de uma lista</p>
+<pre class="r"><code>#View(ls('package:datasets')) no R normal</code></pre>
 </div>
 </div>
 

@@ -53,4 +53,8 @@ ex2 <-read.table('teste2.txt', head = T)
 ex2
 ```
 
+```{r}
+ex3 <- read.table('teste3.csv', head = T, sep = ';', dec = ',')
+ex3
+```
 

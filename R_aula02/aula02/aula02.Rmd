@@ -132,7 +132,7 @@ clientes
 ```
 
 ```{r}
-produtos <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 2)
+produtos <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = "produtos")
 produtos
 ```
 
@@ -141,3 +141,43 @@ enderecos <- read.xls(arquivo, verbose = T, perl = 'perl', sheet = 3)
 enderecos
 ```
 
+```{r}
+clientes$nome
+```
+
+
+```{r}
+produtos$preco
+```
+
+
+```{r}
+enderecos$bairro
+```
+
+```{r}
+xlsfile <- file.path(path.package('gdata'), 'xls', 'iris.xls')
+
+irisxls <- read.xls(xlsfile)
+
+irisxls
+
+```
+
+```{r}
+dim(irisxls)
+```
+
+```{r}
+head(irisxls)
+```
+
+```{r}
+sheetCount(xlsfile)
+```
+
+```{r}
+sheetNames(xlsfile)
+```
+
+#Conexão com banco de dados

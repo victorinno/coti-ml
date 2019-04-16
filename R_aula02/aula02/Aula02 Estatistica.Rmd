@@ -1,6 +1,8 @@
 ---
-title: "R Estatística"
-output: html_notebook
+title: "title"
+output:
+  html_document:
+    df_print: paged
 ---
 
 Ciência que utiliza das teorias probabilísticas para estudos de observação e experimento.
@@ -18,6 +20,7 @@ Condições ou tratamentos são impostos a grupos, para avaliar o resultado. Aqu
 ##Quantitativas - Numéricas
 * Contínuas
 * Discretas
+
 ##Qualitativas - Categóricas
 
 #Amostra
@@ -125,6 +128,75 @@ amostrairis
 
 ```{r}
 summary(amostrairis)
+```
+
+#Dados estratificados
+
+Dados com variáveis categóricas com distribuições diferentes, a proporção não é igual
+
+Exemplo:
+
+Vendedores
+* 100 A
+* 200 B
+* 300 C
+
+50% de cada
+
+Conjunto de dados instalado no R sobre infertilidades
+
+```{r}
+data("infert")
+summary(infert)
+```
+
+```{r}
+dim(infert)
+```
+
+Há um universo de 248 amostras, de 248 eu quero 100
+
+```{r}
+print(round(12 / 248 * 100))
+print(round(120 / 248 * 100))
+print(round(116 / 248 * 100))
+```
+
+```{r}
+amostra <- strata(infert, c("education"), size = c(5,48,47), method = 'srswor')
+amostra
+```
+
+```{r}
+summary(amostra)
+```
+
+```{r}
+dim(amostra)
+```
+
+#Amostra sistemática
+
+necessita o pacote TeachingSampling
+
+```{r}
+library("TeachingSampling")
+```
+
+Intervalo de 10 em 10
+
+```{r}
+amostra <- S.SY(150,10)
+amostra
+```
+
+```{r}
+amostrairis <- iris[amostra,]
+amostrairis
+```
+
+```{r}
+dim(amostrairis)
 ```
 
 

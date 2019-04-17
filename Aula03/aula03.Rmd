@@ -1,6 +1,8 @@
 ---
 title: "R Aula 03"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 Estudar centralidade e a variabilidade

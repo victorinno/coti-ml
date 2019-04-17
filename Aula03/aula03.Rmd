@@ -145,4 +145,46 @@ Encontrando a probabilidade de ser maior que 10 kg
 pnorm(10, 8, 2, lower.tail = F)
 ```
 
+#Probabilidade acumulativa
+
+Qual a probabilidade de ter menos de 6 kg ou mais de 10 kg
+
+```{r}
+pnorm(6, 8, 2) + pnorm(10, 8, 2, lower.tail = F)
+```
+
+Qual a probabilidade de encontrar um objeto com menos de 10 kg e mais de 8 kg
+
+```{r}
+pnorm(10, 8, 2) - pnorm(8, 8, 2)
+```
+
+##Diagrama de normalidade usando a função rnorm()
+
+Criar um conjunto de dados com numeros normalmente distribuidos
+
+```{r}
+x <- rnorm(100, sd = 2)
+x
+```
+
+```{r}
+plot(x)
+```
+
+###Gerar o gráfico de normalidade
+
+```{r}
+qqnorm(x)
+qqline(x)
+```
+
+###Shapiro test
+
+Shapiro test testa o p value, se o p value retorna >= 5% a distribuição não é normal (hipotese nula)
+
+```{r}
+shapiro.test(x)
+```
+
 

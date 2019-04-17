@@ -213,7 +213,103 @@ Correlação:
 * Se for 0 ela não existe
 * Ela pode ser forte até 0.5 ou -0.5
 * Ela pode ser forte acima de 0.7 ou -0.7
+* Pode ser fraca
 
+##Coeficiente de determinação
 
+* Mostra o quanto o modelo consegue explicar os valores
+* Quanto maior, mais explicativo ele é
+* O restante da variabilidade está em variáveis não incluídas no modelo
+* Varia entre 0 e 1
+* Calcua com o quadrado coeficiente da correlação
 
+##Linha de melhor ajuste
+
+Ponto de encontro da linha do Eixo Y(Intersecção): X = 0
+Inclinação: a cada unidade que amenta a variável independente(x), a variável dependente(y) sobe o valor da inclinação.
+Planilhas e Feramentas calculam os valores da intersecção e inclinação.
+
+##Previsão de novo valor
+Formula: previsão = Intersecção + (Inclinação * valor a prever)
+
+##Residuais
+
+A linha de regressão é um ajustecriado com os dados forncidos na criação do modelo, ele é utilizado para criar a linha de regeressão
+
+##Outliers
+São valores fora do padrão de dados. Podem influenciar o modelo de forma negativa.
+A correlçaõ pode diminuir por causa do outliers
+
+##Extrapolação
+Efetuar uma previsão para fora ou depois da regressão. A linearidade da linha de regressão pode se comportar de forma diferente, ou seja, a previsão da extrapolação deve ser avaliada.
+
+##Correlação não é causa
+
+A correlação não é a causa da relação, ou seja, a causa pode ser uma variável que não está sendo estudado no modelo
+
+##Codigos
+
+Prever a distância de parada
+
+```{r}
+data("cars")
+
+cars
+```
+
+```{r}
+dim(cars)
+```
+
+```{r}
+summary(cars)
+```
+
+Verificar a correlação
+
+```{r}
+cor(cars)
+```
+
+```{r}
+plot(cor(cars))
+```
+
+Função do modelo linear
+
+Modelo: velocidade sendo explicada pela distância
+
+```{r}
+modelo <- lm(speed ~ dist, cars)
+modelo
+```
+
+A intersecção é o Intercept(tudo que eu tenho) e a incliniação é o dist(o quanto eu tenho que crescer)
+
+```{r}
+plot(modelo)
+```
+
+Plot de dispersao
+
+```{r}
+plot(speed ~ dist, data = cars)
+abline(modelo) #linha de melhor ajuste
+```
+
+A uma distência de 22 a velocidade e aproximadamente 12
+
+```{r}
+funcao <- function(interseccao, inclinacao, valor){
+  return(interseccao + (inclinacao * valor))
+}
+
+funcao(modelo$coefficients[1], modelo$coefficients[2], 22 )
+```
+
+Usando o R para efetuar previsão
+
+```{r}
+predict(modelo, data.frame(dist = 22))
+```
 

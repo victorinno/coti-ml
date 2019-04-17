@@ -187,6 +187,42 @@ plot(d1)</code></pre>
 <pre><code>## [1] 5.960464e-08</code></pre>
 </div>
 </div>
+<div id="analise-de-distribuicao-normal" class="section level1">
+<h1>Análise de distribuição normal</h1>
+<p>Cálculo da probabilidade</p>
+<p>Numa distribuição normal eles são distribuidos igualmente pela média, 50% para cada lado</p>
+<p>Dois dados são conhecidos:</p>
+<ul>
+<li>Media</li>
+<li>Desvio padrão</li>
+</ul>
+<p>O gráfico de normalidade possuem:</p>
+<ul>
+<li>Todos os dados vão estar a 50% da média</li>
+<li>vão estar a uma distância de até 2 desvios padrões</li>
+</ul>
+<p>Se isso não ocorrer é pq os dados não estão normalmente distribuídos</p>
+<div id="exemplos" class="section level2">
+<h2>Exemplos</h2>
+<p>Qual a probabilidade de encontrar um objeto com o peso menos quer 6 kg</p>
+<ul>
+<li>6kg objeto</li>
+<li>media = 8</li>
+<li>desvio padrão = 2</li>
+</ul>
+<p>Média e desvio padrão são dados conhecidos</p>
+<pre class="r"><code>pnorm(6, 8, 2)</code></pre>
+<pre><code>## [1] 0.1586553</code></pre>
+<pre class="r"><code>pnorm(8, 8, 2)</code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<p>Invertendo para achar o outro lado da cauda</p>
+<pre class="r"><code>pnorm(6, 8, 2, lower.tail = F)</code></pre>
+<pre><code>## [1] 0.8413447</code></pre>
+<p>Encontrando a probabilidade de ser maior que 10 kg</p>
+<pre class="r"><code>pnorm(10, 8, 2, lower.tail = F)</code></pre>
+<pre><code>## [1] 0.1586553</code></pre>
+</div>
+</div>
 
 
 

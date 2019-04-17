@@ -187,4 +187,33 @@ Shapiro test testa o p value, se o p value retorna >= 5% a distribuição não �
 shapiro.test(x)
 ```
 
+#Regressão linear simples
+
+Estuda relação entre uma variável chamada de dependente e outras variáveis chamadas independentes.
+
+##Modelo de regressão linear simples
+
+Relação entre uma varável dependente e uma variável independente
+
+Exemplos:
+
+* Altura dos pais e dos filhos
+* Renda semanal e despesas de consumo
+* Idade e custo ao plano de saúde
+
+##Regressão linear
+
+Correlação:
+
+* Mostra a força e a direção da relação entre variáveis
+* pode ser um valor entre -1 e 1
+* A correlação de A~B é a mesma que B~A
+* Ela tem força e direção
+* Se for 1 ou -1 é perfeita
+* Se for 0 ela não existe
+* Ela pode ser forte até 0.5 ou -0.5
+* Ela pode ser forte acima de 0.7 ou -0.7
+
+
+
 

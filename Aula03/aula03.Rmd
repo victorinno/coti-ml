@@ -1,0 +1,96 @@
+---
+title: "R Aula 03"
+output: html_notebook
+---
+
+Estudar centralidade e a variabilidade
+
+#Probabilidade
+
+Probabilidade (P) -> valor real entre 0 e 1, 0<= p <= 1
+
+##Distribuição Binomial
+
+Funcoes:
+
+* dbinom(), distribuição binomial
+* pbinom(), distribuição cumulativa
+
+
+##Calculo de probabilidade com a distribuição normal
+dbniom()
+
+* x - numero de sucessos aguardados
+* size - numero de eventos
+* probabilidade
+
+Buscando 3 sucessos em 5 eventos com espaço igual a 2
+
+```{r}
+dbinom(3, 5, 0.5)
+```
+
+Sinal de transito de 4 tempos
+
+nenhum sinal aberto -> 4 sinais
+
+```{r}
+dbinom(0, 4, 0.25)
+```
+
+encontrar 1 sinal aberto
+
+```{r}
+dbinom(1, 4, 0.25)
+```
+
+```{r}
+dbinom(2, 4, 0.25)
+```
+
+```{r}
+dbinom(3, 4, 0.25)
+```
+
+```{r}
+dbinom(4, 4, 0.25)
+```
+
+
+```{r}
+d <- c(dbinom(0, 4, 0.25),dbinom(1, 4, 0.25),dbinom(2, 4, 0.25),dbinom(3, 4, 0.25),dbinom(4, 4, 0.25))
+
+plot(d)
+```
+
+##Probabilidade cumulativa
+
+Significa todas as possibilidades possíveis
+
+pbniom calcula a probabilidade cumulativa
+
+```{r}
+pbinom(0, 4, 0.25)
+```
+
+```{r}
+pbinom(3, 4, 0.25)
+```
+
+```{r}
+d1 <- c(pbinom(0, 4, 0.25),pbinom(1, 4, 0.25),pbinom(2, 4, 0.25),pbinom(3, 4, 0.25),pbinom(4, 4, 0.25))
+
+plot(d1)
+```
+
+Prova de 12 questões
+quero saber a possibilidade de ter 7 acertos em 4 alternativas
+
+```{r}
+dbinom(7, 12, 0.25)
+```
+
+```{r}
+dbinom(12, 12, 0.25)
+```
+

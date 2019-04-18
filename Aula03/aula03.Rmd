@@ -313,3 +313,24 @@ Usando o R para efetuar previsão
 predict(modelo, data.frame(dist = 22))
 ```
 
+```{r}
+summary(modelo)
+```
+
+```{r}
+modelo$coefficients
+```
+
+```{r}
+modelo$residuals
+```
+
+```{r}
+plot(modelo$fitted.values, cars$dist)
+```
+
+Os fitted values são usados para criar a linha de melhor ajuste do abline()
+
+#Modelo de regressão linear multipla
+
+

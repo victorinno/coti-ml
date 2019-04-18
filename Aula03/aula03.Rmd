@@ -396,4 +396,7 @@ summary(modelo)$r.squared
 summary(modelo)$adj.r.squared
 ```
  
- 
+```{r}
+predict(modelo, data.frame(disp = 200, hp = 100, cyl = 4))
+```
+

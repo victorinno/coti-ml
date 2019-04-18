@@ -313,3 +313,87 @@ Usando o R para efetuar previsão
 predict(modelo, data.frame(dist = 22))
 ```
 
+```{r}
+summary(modelo)
+```
+
+```{r}
+modelo$coefficients
+```
+
+```{r}
+modelo$residuals
+```
+
+```{r}
+plot(modelo$fitted.values, cars$dist)
+```
+
+Os fitted values são usados para criar a linha de melhor ajuste do abline()
+
+#Modelo de regressão linear multipla
+
+```{r}
+data("mtcars")
+mtcars
+```
+
+```{r}
+#fix(mtcars)
+head(mtcars)
+```
+
+```{r}
+dim(mtcars)
+```
+
+```{r}
+cor(mtcars[1:4])
+```
+
+Regressão simples
+
+```{r}
+modelo <- lm(mpg ~ disp, data = mtcars)
+modelo
+```
+
+Coeficiente de determinação, diz o quanto o modelo está explicado
+
+```{r}
+summary(modelo)$r.squared
+```
+
+```{r}
+plot(mpg ~disp, data = mtcars)
+abline(modelo)
+```
+
+Quer prever o mpg para um carro
+
+```{r}
+predict(modelo, data.frame(disp = 200))
+```
+
+```{r}
+head(mtcars[1:4])
+```
+
+##Modelo de rgressão multípla
+
+```{r}
+modelo <- lm(mpg ~ disp + cyl + hp, data = mtcars)
+modelo
+```
+
+```{r}
+summary(modelo)$r.squared
+```
+ 
+ Coeficiente ajustado, que é a raiz quadrada do coeficiente de determinação
+ 
+```{r}
+summary(modelo)$adj.r.squared
+```
+ 
+ 

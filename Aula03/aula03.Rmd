@@ -400,3 +400,44 @@ summary(modelo)$adj.r.squared
 predict(modelo, data.frame(disp = 200, hp = 100, cyl = 4))
 ```
 
+#Outliers
+
+Iris -> datasets
+
+```{r}
+data("iris")
+boxplot(iris$Sepal.Width)
+```
+
+Não quero mostrar outliers
+
+```{r}
+boxplot(iris$Sepal.Width, outline = F)
+```
+
+Stats -> exibir os outliers de uma coleção 
+
+Somente os outliers
+
+```{r}
+boxplot(iris$Sepal.Width)$out
+```
+
+```{r}
+library('outliers')
+
+```
+
+Amostrar o superiore
+
+```{r}
+outlier(iris$Sepal.Width)
+```
+
+Amostrar o inferior
+
+```{r}
+outlier(iris$Sepal.Width, opposite = T)
+```
+
+

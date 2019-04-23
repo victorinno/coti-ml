@@ -1,0 +1,183 @@
+---
+title: "R Aula 04"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Regressão linear simples
+
+Para escolher um arquivo pelo prompt usar o file.choose
+
+```{r}
+#dados <- read.csv(file.choose(), sep = ';', dec = ',', header = T)
+dados <- read.csv("vendas.csv", sep = ';', dec = ',', header = T)
+dados
+```
+
+```{r}
+head(dados)
+```
+
+
+```{r}
+cor(dados)
+```
+
+lm -> linear model
+
+```{r}
+modelo <-  lm(vendas ~ preco, data = dados)
+modelo
+```
+
+```{r}
+modelo$coefficients
+```
+
+```{r}
+previsao <- modelo$coefficients[1] + modelo$coefficients[2] * 340
+previsao
+```
+
+```{r}
+previsao <- predict(modelo, data.frame(preco = c(230,450,710,190,340)))
+round(previsao)
+```
+
+# Regressão logística
+
+USa o csv de eleicao
+
+```{r}
+eleicao <- read.csv2("Eleicao.csv", sep = ';')
+eleicao
+```
+
+Como só tem duas variáveis o plot é de dispersão
+
+```{r}
+plot(eleicao$DESPESAS, eleicao$SITUACAO)
+```
+
+```{r}
+summary(eleicao)
+```
+
+```{r}
+cor(eleicao$DESPESAS, eleicao$SITUACAO)
+```
+
+### Modelo de regressão logística
+
+```{r}
+modelo <- glm(SITUACAO ~ DESPESAS, data = eleicao, family = 'binomial')
+modelo
+```
+
+```{r}
+plot(eleicao$DESPESAS, eleicao$SITUACAO, col = 'red', pch = 20)
+#pch é o código do ícone
+```
+
+```{r}
+plot(eleicao$DESPESAS, eleicao$SITUACAO, col = 'red', pch = 20)
+points(eleicao$DESPESAS, modelo$fitted.values, pch = 4)
+```
+
+### Treinamento dos dados
+
+```{r}
+peleicao <- read.csv('NovosCandidatos.csv', sep = ';', header = T)
+peleicao
+```
+
+```{r}
+peleicao$RESULT = predict(modelo, newdata = peleicao, type = 'response')
+
+peleicao
+```
+
+O result retorna a probabilidade de ser eleito entre 0 e 1
+
+
+Vamos criar um padrão: Quem tem mais de 80% é eleito
+
+```{r}
+peleicao$SITUACAO = (peleicao$RESULT * 100 > 85)
+
+peleicao
+
+```
+
+```{r}
+peleicao$SITUACAO = ifelse(peleicao$SITUACAO == T, 1, 0)
+peleicao
+```
+
+## Distribuição de poisson
+
+Distribuição de um intervalo de tempo
+Num lugar com a media de 2 acidentes por dia qual a chance de ocorrer 3 acidentes?
+
+x = 3
+media_acidentes = 2
+
+```{r}
+x = 3
+media_acidentes = 2
+dpois(x, lambda = media_acidentes)
+```
+
+Mas e se for para descobrir a probabilidade de ser <= 3
+
+```{r}
+ppois(x, lambda = media_acidentes)
+```
+
+Mas e se for > 3
+
+```{r}
+ppois(x, lambda = media_acidentes, lower.tail = F)
+```
+
+# Series temporais (Forecast)
+
+Estuda o comportamento de uma varável continua ao longo do tempo
+
+Areas:
+
+* Economia
+* Previsão do tempo
+* Previsão Financeira
+
+Estacionarias - Flutuam em torno de uma mesma média
+Não estacionarias - Contêm mudanças acentuadas
+
+Estocásticas - Formula + Fator aleatória, não pode ser explicado
+Determinísticas - Explicadas através de uma formula
+
+Componentes:
+
+* Tendência - conte funcao
+* Sazionalidade - contem funcao
+* Aleatoriedade - não possui explicação
+
+```{r}
+AirPassengers
+```
+
+A primeira coluna sem nome repsenta o índice, e numa série temporal normalmente é o tempo, nesse caso anos
+
+Inicio e fim
+
+```{r}
+start(AirPassengers)
+```
+
+
+```{r}
+end(AirPassengers)
+```
+
+

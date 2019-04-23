@@ -180,4 +180,41 @@ start(AirPassengers)
 end(AirPassengers)
 ```
 
+```{r}
+plot(AirPassengers)
+```
+
+Substrato de uma serie temporal
+
+```{r}
+subst <-  window(AirPassengers, start=c(1960,1), end=c(1960,12))
+plot(subst)
+```
+
+### Partes
+
+Decomposição de série temporal
+
+```{r}
+dec <- decompose(AirPassengers)
+
+dec
+```
+
+Sasionalidade
+
+```{r}
+dec$seasonal
+```
+
+Tendência
+
+```{r}
+dec$trend
+```
+
+Aleatoriedade
+```{r}
+dec$random
+```
 

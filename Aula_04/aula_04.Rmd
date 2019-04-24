@@ -279,4 +279,17 @@ previsao
 plot(previsao)
 ```
 
+# Machine Learning
+
+É o desenvolvimento de técnicas computacionais usados para que o sistema adquira conhecimento de forma automática. Dados são usados como fonte de informação para uqe a máquina possa aprender.
+
+Indução: É a forma de inferência lógica que permite obter conclusões a partir de um conjunto de exemplos
+
+## CUidados na escolha dos exemplos
+
+O aprendizado é continuo, ou seja, a maquina aprende mais conforme o tempo.
+O aprendizado é mensurável, podemos medir o tamanho do aprendizado.
+Durante o aprendizado a maquina cria um modelo depois de observado os dados historicos informados.
+
+
 

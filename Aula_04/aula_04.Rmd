@@ -218,3 +218,65 @@ Aleatoriedade
 dec$random
 ```
 
+### Previsão
+
+Para fazer a predição se usa a estrapolação, ou seja, a previsão está fora dos meus dados e de sua média.
+
+Ele trabalha dentro de um intervalo de segurança
+
+```{r}
+mean(AirPassengers)
+```
+
+Média da janela do último ano
+
+```{r}
+mean(window(AirPassengers, start=c(1960,1), end=c(1960,12)))
+```
+
+Para trabalhar com médias moveis usa o pacote forecast
+
+```{r}
+library(forecast)
+```
+
+* ma - conjunto de dados
+* order - quantidade de meses
+
+```{r}
+mediam <- ma(AirPassengers, order = 12)
+mediam
+```
+
+### Previsão de forecast
+
+```{r}
+previsao <- forecast(mediam, h = 12)
+previsao
+```
+
+```{r}
+plot(previsao)
+```
+
+## Função arima
+
+```{r}
+arima = auto.arima(AirPassengers)
+arima
+```
+
+```{r}
+plot(arima)
+```
+
+```{r}
+previsao = forecast(arima, h = 24)
+previsao
+```
+
+```{r}
+plot(previsao)
+```
+
+

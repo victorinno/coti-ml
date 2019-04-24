@@ -291,5 +291,92 @@ O aprendizado é continuo, ou seja, a maquina aprende mais conforme o tempo.
 O aprendizado é mensurável, podemos medir o tamanho do aprendizado.
 Durante o aprendizado a maquina cria um modelo depois de observado os dados historicos informados.
 
+## Exemplo I
 
+Classificação na pratica com naive Bayes
+
+```{r}
+library(e1071)
+```
+
+
+```{r}
+credito <- read.csv('Credit.csv', sep = ',', header = T)
+credito
+```
+
+```{r}
+head(credito)
+```
+
+```{r}
+dim(credito)
+```
+
+Classificação do registro em bad ou good
+
+```{r}
+levels(credito$class)
+```
+
+Dividir o conjunto de dados em treino e teste
+
+70% treino e 30% teste
+
+```{r}
+amostra <- sample(2, 1000, replace = T, prob = c(0.7,0.3))
+amostra
+```
+
+Dividindo em dois conjuntos de credito
+
+```{r}
+credito_treino <- credito[amostra == 1, ]
+summary(credito_treino$class)
+```
+
+
+```{r}
+credito_teste <- credito[amostra == 2, ]
+summary(credito_teste$class)
+```
+
+```{r}
+dim(credito_treino)
+```
+
+```{r}
+dim(credito_teste)
+```
+
+Criação do modelo de predição do nave Bayes
+
+* Formula
+* Conjunto de dados
+
+```{r}
+modelo <- naiveBayes(class ~ ., credito_treino)
+modelo
+```
+
+modelo de previsão
+
+```{r}
+previsao <- predict(modelo, credito_teste)
+previsao
+```
+
+Usar matrix de confusão para calcular a acurácia
+
+```{r}
+confusao <- table(credito_teste$class, previsao)
+confusao
+```
+
+Taxa de acerto
+
+```{r}
+taxac <- sum(diag(confusao) / sum(confusao))
+taxac
+```
 

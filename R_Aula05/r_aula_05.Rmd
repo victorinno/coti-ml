@@ -1,0 +1,168 @@
+---
+title: "R Aula 05"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Probabilidade
+
+## Analise de variancia
+
+É um rocedimento usado para comparar a distribuição de três ou mais grupos em amostras independentes.
+
+Só pode ser feita com mais de 2 grupos.
+
+Você trabalha para invaldar a hipótese nula (H0)
+
+## Anova
+
+Carregar os dados
+
+```{r}
+tratamento <-  read.csv('anova.csv', sep = ';')
+tratamento
+```
+
+```{r}
+dim(tratamento)
+```
+
+```{r}
+boxplot(Horas ~ Remedio, data = tratamento)
+```
+
+Criando a anova
+
+```{r}
+an <- aov(Horas ~ Remedio, data = tratamento)
+an
+```
+
+```{r}
+plot(an)
+```
+
+```{r}
+summary(an)
+```
+
+O pr(>F) é o Pvalue, que se for 0.05 é uma hipótese nula
+
+```{r}
+an <- aov(Horas ~ Remedio * Sexo, data = tratamento)
+an
+```
+
+```{r}
+summary(an)
+```
+
+## Teste de tukey
+
+Retorna a diferença entre os grupos
+
+```{r}
+an <- aov(Horas ~ Remedio, data = tratamento)
+tukey <- TukeyHSD(an)
+tukey
+```
+
+Como o C tem uma diferença maior que o B (1.000) e o A (0.375) então ele é o melhor na nossa análise
+
+```{r}
+plot(tukey)
+```
+
+# ML
+
+## Árvore de decisão
+
+```{r}
+library('rpart')
+```
+
+```{r}
+credito <- read.csv2('Credit.csv', sep = ',', header = T)
+credito
+```
+
+```{r}
+amostra <- sample(2, 1000, replace = T, prob = c(0.7, 0.3))
+amostra
+```
+
+Separando conjunto de teste e de treino
+
+```{r}
+creditotreino <- credito[amostra == 1,]
+creditotest <- credito[amostra == 2,]
+
+creditotest
+```
+
+```{r}
+dim(creditotest)
+```
+
+```{r}
+dim(creditotreino)
+```
+
+## Criação
+
+Criação de modelo arvore decisão
+
+class -> class -> metodo
+
+Regressão -> anova -> metodo
+
+Arvore -> modelo criado com algoritmo de arvore de decisão
+
+```{r}
+arvore <- rpart(class ~., data = creditotreino, method = "class")
+arvore
+```
+
+```{r}
+plot(arvore)
+text(arvore, use.n = T, all = T, cex = 0.8)
+```
+
+```{r}
+teste <- predict(arvore, newdata = creditotest)
+teste
+```
+
+```{r}
+dim(teste)
+```
+
+```{r}
+dim(creditotest)
+```
+
+```{r}
+cred = data.frame()
+cred <- cbind(creditotest, teste)
+cred
+```
+
+```{r}
+cred["Result"] <- ifelse(cred$bad > 0.5, "bad", "good")
+cred
+```
+
+# Calculo de matriz de confusão
+
+```{r}
+confusao <- table(cred$class, cred$Result)
+confusao
+```
+
+```{r}
+taxac <- (confusao[1] + confusao[4]) / sum(confusao)
+taxac
+```
+
+

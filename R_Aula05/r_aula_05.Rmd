@@ -165,4 +165,88 @@ taxac <- (confusao[1] + confusao[4]) / sum(confusao)
 taxac
 ```
 
+# Machine learning regressão
+
+Conjunto de dados
+
+Library para instalação de datasets: mlbench
+
+```{r}
+library('mlbench')
+```
+
+Dataset para regressão
+
+```{r}
+data("BostonHousing")
+#help("BostonHousing")
+```
+
+```{r}
+dados <- BostonHousing
+dados
+```
+
+```{r}
+dim(dados)
+```
+
+```{r}
+amostra <- sample(2, 506, replace = T, prob = c(0.7, 0.3))
+amostra
+```
+
+```{r}
+dadostreino <- dados[amostra == 1,]
+dadosteste <-  dados[amostra == 2,]
+
+print(dim(dadostreino))
+print(dim(dadosteste))
+```
+
+```{r}
+head(dados$medv, 10)
+```
+
+```{r}
+fit <- rpart(medv ~., data = dadostreino, method = "anova")
+fit
+```
+
+```{r}
+plot(fit)
+text(fit, use.n = T, all = T, cex = 0.8)
+```
+
+```{r}
+prev <- predict(fit, newdata = dadosteste)
+prev
+```
+
+```{r}
+plot(prev)
+```
+
+```{r}
+summary(prev)
+```
+
+```{r}
+r <- cbind(dadosteste, prev)
+r
+```
+
+```{r}
+r$dif <- abs(r$medv - r$prev)
+r
+```
+
+```{r}
+max(r$dif)
+```
+
+```{r}
+min(r$dif)
+```
+
 

@@ -342,3 +342,55 @@ print(taxac1 * 100)
 print(taxac2 * 100)
 ```
 
+# KNN
+
+Aprendizado baseado em instância, não cria um modelo
+
+pacotes: class
+
+```{r}
+library(class)
+```
+
+## criação de amostra
+
+Neste tipo de treinamento criamos duas amostras
+
+```{r}
+amostra <- sample(2, 150, replace = T, prob = c(0.7,0.3))
+iristreino <- iris[amostra == 1,]
+classificar <- iris[amostra == 2,]
+```
+
+```{r}
+dim(iristreino)
+```
+
+```{r}
+dim(classificar)
+```
+
+```{r}
+head(iristreino)
+```
+
+```{r}
+levels(iris$Species)
+```
+
+```{r}
+previsao <- knn(iristreino[,1:4], classificar[, 1:4], iristreino[,5], k = 3)
+previsao
+```
+
+```{r}
+confusao <- table(classificar[,5], previsao)
+confusao
+```
+
+```{r}
+taxac <- (confusao[1] + confusao[5] + confusao[9]) / sum(confusao)
+taxac * 100
+```
+
+d

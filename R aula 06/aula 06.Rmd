@@ -1,0 +1,57 @@
+---
+title: "R Aula 6"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Ensamble learning
+
+Multiplos algoritmos usando varios modelos
+
+```{r}
+library(randomForest)
+```
+
+```{r}
+credito <-  read.csv("Credit.csv", sep = "," , header = T)
+credito
+```
+
+## Conjunto de amostras
+
+```{r}
+amostra <- sample(2, 1000, replace = T, prob = c(0.7, 0.3))
+creditotreino <- credito[amostra == 1,]
+creditoteste  <- credito[amostra == 2,]
+
+print(dim(creditotreino))
+print(dim(creditoteste))
+
+```
+
+```{r}
+floresta <- randomForest(class ~ ., data = creditotreino, ntre = 100, importance = T)
+floresta
+```
+
+```{r}
+varImpPlot(floresta)
+```
+
+```{r}
+previsao <- predict(floresta, creditoteste)
+previsao
+```
+
+```{r}
+confusao <- table(previsao, creditoteste$class)
+confusao
+```
+
+```{r}
+taxac <- (confusao[1] + confusao[4]) / sum(confusao)
+taxac * 100
+```
+
+

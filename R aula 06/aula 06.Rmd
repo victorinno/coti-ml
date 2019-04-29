@@ -173,3 +173,16 @@ summary(regras)
 inspect(regras)
 ```
 
+```{r}
+library(arulesViz)
+```
+
+```{r}
+plot(regras, method = "graph", control = list(type="items"))
+```
+
+```{r}
+plot(regras, method = "matrix", control = list(type="items"))
+```
+
+

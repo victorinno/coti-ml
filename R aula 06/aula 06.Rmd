@@ -114,6 +114,62 @@ cluster
 ```
 
 ```{r}
+table(cluster$cluster, iris$Species)
+```
 
+## Kmedoids
+
+```{r}
+library(cluster)
+```
+
+Baseado em medoids -> ponto real de dados
+
+```{r}
+cluster <- pam(iris[,1:4], k = 3)
+cluster
+```
+
+```{r}
+plot(cluster)
+```
+
+## Regras de associação
+
+Mineração de padrões é um dos mais importantes conceitos de data mining
+
+* Algoritmo apriori
+* Algoritmo Eclat
+
+### Regras de associação com apriori
+
+```{r}
+library(arules)
+```
+
+```{r}
+transacoes <- read.transactions("dados/cursos.txt", format = "basket", sep = ",")
+transacoes
+```
+
+```{r}
+inspect(transacoes)
+```
+
+```{r}
+image(transacoes)
+```
+
+```{r}
+regras <- apriori(transacoes, parameter = list(sup = 0.02, conf = 0.02))
+regras
+```
+
+```{r}
+summary(regras)
+```
+
+```{r}
+inspect(regras)
 ```
 

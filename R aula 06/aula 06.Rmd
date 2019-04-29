@@ -49,9 +49,71 @@ confusao <- table(previsao, creditoteste$class)
 confusao
 ```
 
+# Tarefas não supervisionadas
+
+
+
 ```{r}
 taxac <- (confusao[1] + confusao[4]) / sum(confusao)
 taxac * 100
 ```
 
+# Tarefas não supervisionadas
+
+É quando o conjunto de dados não possui uma classe. Agrupamento é usado para criar relação entre as instancias do conjunto de dados.
+
+## K-means
+
+Conjunto de dados iris, 150 instancias e 5 colunas
+class -> setosa, versicolor e virginia
+agrupamento -> quando so elementos não possuem classe
+
+Criar uma variável cluster -> resultado do agrupamento
+
+* Criação de grupos
+* Medias do atributo de cada cluster baseado em centróide
+
+```{r}
+iris
+```
+
+```{r}
+summary(iris)
+```
+
+
+```{r}
+cluster <- kmeans(iris[1:4], center = 3)
+cluster
+```
+
+Matriz de confusao
+
+```{r}
+confusao <- table(iris$Species, cluster$cluster)
+confusao
+```
+
+```{r}
+plot(iris[,1:4], col = cluster$cluster)
+```
+
+## cmeans
+
+Agrupamento parcial de dados
+
+Pertence a mais de um grupo
+
+```{r}
+library(e1071)
+```
+
+```{r}
+cluster <- cmeans(iris[, 1:4], centers = 3)
+cluster
+```
+
+```{r}
+
+```
 

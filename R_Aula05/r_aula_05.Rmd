@@ -310,6 +310,35 @@ library(FSelector)
 ```
 
 ```{r}
+seletores <- random.forest.importance(class ~., credito)
+seletores
+```
 
+selecionar os atributos checking_status, duration, credit_history, purpose
+
+```{r}
+modelo2 <- svm(class ~ checking_status + duration + credit_history + purpose, creditotreino)
+modelo2
+```
+
+```{r}
+pred2 <- predict(modelo2, creditotest)
+pred2
+```
+
+
+```{r}
+confusao2 <- table(creditotest$class,pred2)
+confusao2
+```
+
+```{r}
+taxac2 <- (confusao2[1] + confusao2[4]) / sum(confusao2)
+taxac2 * 100
+```
+
+```{r}
+print(taxac1 * 100)
+print(taxac2 * 100)
 ```
 

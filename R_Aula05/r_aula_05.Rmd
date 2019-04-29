@@ -249,4 +249,67 @@ max(r$dif)
 min(r$dif)
 ```
 
+```{r}
+mean(r$dif)
+```
+
+```{r}
+media <- mean(r$dif) * 1.3
+media
+```
+
+Calcular o percentual de erro
+
+```{r}
+proc <- (sum(r$dif <= media) * 100) / dim(r)[1]
+proc
+```
+
+# Seleção de atributos 
+
+Serve para criar modelos mais simples
+
+Biblioteca e1071
+
+```{r}
+library(e1071)
+```
+
+```{r}
+credito
+```
+
+```{r}
+modelo <- svm(class ~., creditotreino)
+modelo
+```
+
+```{r}
+pred <- predict(modelo, creditotest)
+pred
+```
+
+```{r}
+confusao <- table(creditotest$class,pred)
+confusao
+```
+
+taxa de acerto
+
+```{r}
+taxac1 <- (confusao[1] + confusao[4]) / sum(confusao)
+taxac1 * 100
+```
+
+Seleção de atributos pega os atributos mais importantes em relação ao modelo
+
+pacote FSelector
+
+```{r}
+library(FSelector)
+```
+
+```{r}
+
+```
 

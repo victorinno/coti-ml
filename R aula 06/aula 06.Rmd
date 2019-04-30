@@ -219,5 +219,8 @@ regras
 inspect(regras)
 ```
 
+```{r}
+plot(regras, method = "graph", control = list(alpha = 1.0, arrowSize = 1.0))
+```
 
 

@@ -185,4 +185,39 @@ plot(regras, method = "graph", control = list(type="items"))
 plot(regras, method = "matrix", control = list(type="items"))
 ```
 
+```{r}
+plot(regras, method = "matrix3D", measure = "lift", control = list(reorder = 'support/confidence'))
+```
+
+```{r}
+plot(regras, method = "grouped")
+```
+
+### Eclat
+
+
+```{r}
+transacoes <- read.transactions("dados/produtos.txt", format = "basket", sep = ",")
+transacoes
+```
+
+```{r}
+inspect(transacoes)
+```
+
+
+```{r}
+image(transacoes)
+```
+
+```{r}
+regras <- eclat(transacoes, parameter = list(supp=0.1, maxlen=15))
+regras
+```
+
+```{r}
+inspect(regras)
+```
+
+
 

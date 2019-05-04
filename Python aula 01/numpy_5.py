@@ -59,8 +59,49 @@ print(d)
 
 #Indexação boleana
 
-a = np.array([1, 2], [3, 4], [5, 6])
+a = np.array([[1, 2], [3, 4], [5, 6]])
 print(a)
 
 idx = (a > 2)
 print(idx)
+
+
+#Juntando arrays
+
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6]])
+
+print(np.concatenate((a, b), axis = 0))
+
+
+#Shuffle
+
+a = np.arange(10)
+np.random.shuffle(a)
+print(a)
+
+a = np.array([1, 10 + 2j, 20 + 5j], dtype = complex)
+print(a)
+
+print(a[1])
+print(a[1] + a[2])
+print(a[1] - a[2])
+print(a[1] * a[2])
+print(a[1] / a[2])
+
+#gerando arrays
+
+print(np.arange(10))
+
+print(np.arange(1, 100, 2))
+
+
+
+
+
+
+
+
+
+
+

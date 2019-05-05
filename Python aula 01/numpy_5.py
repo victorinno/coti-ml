@@ -95,7 +95,9 @@ print(np.arange(10))
 
 print(np.arange(1, 100, 2))
 
+#lim spaces
 
+print(np.linspace(2.0, 3.0, 5))
 
 
 

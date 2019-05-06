@@ -22,3 +22,7 @@ print(titanic.describe())
 
 print("===Contar valores")
 print(titanic['class'].value_counts())
+
+print("Tamanho do dataset")
+print(len(pydataset.data()))
+

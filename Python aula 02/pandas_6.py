@@ -25,3 +25,5 @@ titanic['class'] = titanic['class'].astype('category')
 print(titanic['class'].nbytes)
 
 
+
+

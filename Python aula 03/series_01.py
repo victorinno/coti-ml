@@ -146,3 +146,15 @@ ts['1960-01-01':'1960-12-01'].mean()
 media_movel = ts.rolling(window = 12).mean()
 media_movel
 plt.plot(media_movel)
+
+# =============================================================================
+# Media dos 12 primeiros
+# =============================================================================
+
+ts[0:12].mean()
+
+ts[1:13].mean()
+
+plt.plot(ts)
+plt.plot(media_movel, color='red')
+
